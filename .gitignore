@@ -1,0 +1,5 @@
+private/
+__pycache__/
+*.pyc
+.DS_Store
+runs/transcripts/*_map.pgw

@@ -1,0 +1,1 @@
+The layer "counties" contains every county in the contiguous United States, with its 2023 population in the field POP2023. Calculate the population density of each county in people per square kilometre and show it on a map with graduated colours. Then tell me how many counties have a density above 100 people per square kilometre, and what the median county density is.

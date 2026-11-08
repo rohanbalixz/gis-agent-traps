@@ -1,0 +1,12 @@
+[22:39:51] start A-set1-r2_t2
+[23:24:21] end   A-set1-r2_t2  status=completed
+[23:24:21] start C-set1-r2_t2
+[23:55:31] end   C-set1-r2_t2  status=completed
+[23:55:31] start A-set1-r1_t2
+[00:45:16] end   A-set1-r1_t2  status=completed
+[00:45:16] start B-set1-r3_t2
+[00:49:06] end   B-set1-r3_t2  status=completed
+[00:49:06] start A-set2-r3_t2
+[01:01:41] end   A-set2-r3_t2  status=code-failed-5-times
+[01:01:42] start A-set2-r3_t3
+[04:29:57] end   A-set2-r3_t3  status=code-failed-5-times

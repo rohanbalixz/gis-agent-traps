@@ -1,0 +1,1069 @@
+[trap-driver] run C-set1-r3  model gpt-oss:20b  data_path:
+/Users/rohanbali/gis_work/run16/cities.gpkg
+
+========================================================
+User: The layer "cities" has 44 cities. An urban-growth model was trained on the cities in region A (REGION = "A") and applied, without retraining, to the cities in region B. ERROR is the model's test error in each city (higher is worse). GROWTH is the city's annual built-up growth rate in percent per year, NDVI is its mean vegetation index, and POP_DENS is its population density in people per square kilometre. Map the error. Then use the covariates to explain why the error is higher in region B, and say which covariate is responsible.
+========================================================
+========================================================
+MODEL CONFIGURATION INFO
+========================================================
+Selected Model: gpt-oss:20b
+Model Type: Local Model via Ollama Provider
+Provider Class: OllamaProvider
+Provider Type: Ollama Local Provider
+API Method: OpenAI-compatible endpoint
+Base URL: http://128.118.54.16:11434/v1
+API Key: Not required
+========================================================
+AI IS ANALYZING THE TASK ...
+========================================================
+task_name: covariate_explanation
+========================================================
+AI IS EXAMINING THE DATA ...
+========================================================
+data overview: ['/Users/rohanbali/gis_work/run16/cities.gpkg. Data overview: Columns:\n  - CITY_ID: str (sample: B11)\n  - REGION: str (sample: B)\n  - ERROR: float64 (sample: 0.518)\n  - GROWTH: float64 (sample: 5.75)\n  - NDVI: float64 (sample: 0.254)\n  - POP_DENS: int64 (sample: 3172)\n\nCoordinate Reference System: EPSG:4326']
+{'data_locations': [{'location': '/Users/rohanbali/gis_work/run16/cities.gpkg', 'format': 'GeoPackage', 'meta_str': 'Columns:\n  - CITY_ID: str (sample: B11)\n  - REGION: str (sample: B)\n  - ERROR: float64 (sample: 0.518)\n  - GROWTH: float64 (sample: 5.75)\n  - NDVI: float64 (sample: 0.254)\n  - POP_DENS: int64 (sample: 3172)\n\nCoordinate Reference System: EPSG:4326'}]}
+You are a GIS expert. Convert the following user request into a **short GIS task description**.
+
+Think step-by-step about what the user is asking, and then write a **concise, domain-specific description** of the GIS task they want to perform.
+
+REQUIREMENTS:
+- Do NOT include steps related to data acquisition or downloading data.
+- Do NOT mention specific software (e.g., GIS software, ArcGIS, QGIS).
+- Focus ONLY on spatial analysis or GIS operations.
+- Use technical GIS terms where appropriate (e.g., Buffer, Clip, Reproject, Attribute Query).
+- Check the Data overview and select the suitable layers, attributes, and field information that would be needed for the User Query.
+- Please include the layer name in the task description.
+- Please always check the {data_overview} for projection information and the {User_Query} before deciding whether reprojection of data is needed is needed.
+- Only do the reprojection as needed when 1) e.g., calculating distances/buffers that needs projected CRS, and the layers have different projections.
+- Start each operation with a label
+- Output ONLY the GIS task description - do NOT explain your reasoning.
+
+INSTRUCTIONS:
+1. 
+    Let's think step-by-step:
+    1. What is the user’s goal?
+    2. What data is available (review the Data overview for layers, attributes, and field information)?
+    3. What GIS operations are needed to achieve it?
+    4. Write a concise summary of the GIS task
+    5. List labeled operations to perform.
+
+
+Data Overview:
+1. /Users/rohanbali/gis_work/run16/cities.gpkg. Data overview: Columns:
+  - CITY_ID: str (sample: B11)
+  - REGION: str (sample: B)
+  - ERROR: float64 (sample: 0.518)
+  - GROWTH: float64 (sample: 5.75)
+  - NDVI: float64 (sample: 0.254)
+  - POP_DENS: int64 (sample: 3172)
+
+Coordinate Reference System: EPSG:4326
+
+User Query:
+"The layer "cities" has 44 cities. An urban-growth model was trained on the cities in region A (REGION = "A") and applied, without retraining, to the cities in region B. ERROR is the model's test error in each city (higher is worse). GROWTH is the city's annual built-up growth rate in percent per year, NDVI is its mean vegetation index, and POP_DENS is its population density in people per square kilometre. Map the error. Then use the covariates to explain why the error is higher in region B, and say which covariate is responsible."
+
+Output Sample:
+
+Perform a spatial analysis to identify and quantify the counties in Pennsylvania with suitability for tree planting based on annual rainfall. Specifically, execute the following tasks:
+1. **Attribute Query**: Filter the counties of Pennsylvania using an attribute query to select those with annual rainfall greater than 2.5 inches.
+2. **Calculate Area**: Determine the total area of the selected counties to assess the percentage of Pennsylvania suitable for tree planting.
+3. **Count Features**: Count the number of counties meeting the rainfall criteria to identify how many are suitable for tree planting.
+
+
+
+TASK_BREAKDOWN:**GIS Task Description**
+
+Map and analyze the model error across the "cities" layer to identify the covariate most responsible for higher error in region B.
+
+**Operations**
+
+1. **Symbolize Error**: Apply a graduated color ramp to the "ERROR" field of the "cities" layer to visually map error values across all cities.  
+2. **Attribute Query – Region A**: Select features where `REGION = 'A'`.  
+3. **Attribute Query – Region B**: Select features where `REGION = 'B'`.  
+4. **Calculate Statistics**: Compute the mean, median, and standard deviation of `ERROR`, `GROWTH`, `NDVI`, and `POP_DENS` separately for each region.  
+5. **Correlation Analysis**: Calculate the Pearson correlation coefficient between `ERROR` and each covariate (`GROWTH`, `NDVI`, `POP_DENS`) within the entire dataset.  
+6. **Identify Key Covariate**: Determine which covariate has the strongest (most negative or positive) correlation with `ERROR` and report it as the likely driver of higher error in region B.
+
+_
+========================================================
+AI IS SELECTING THE APPROPRIATE TOOL(S) ...
+========================================================
+TOOL SELECT PROMPT ---------------------: Your role:  A professional Geo-information scientist with high proficiency in Geographic Information System (GIS) operations. You also have excellent proficiency in QGIS to perform GIS operations. You are very familiar with QGIS Processing toolbox. You have super proficency in python programming. 
+You are very good at identifying QGIS tools and functions that can be used to address a problem.
+ 
+Your mission:  You are to provide a structured response to contain the tool mentioned in this explanation and analysis of the tools to be used to perform a task: : **GIS Task Description**
+
+Map and analyze the model error across the "cities" layer to identify the covariate most responsible for higher error in region B.
+
+**Operations**
+
+1. **Symbolize Error**: Apply a graduated color ramp to the "ERROR" field of the "cities" layer to visually map error values across all cities.  
+2. **Attribute Query – Region A**: Select features where `REGION = 'A'`.  
+3. **Attribute Query – Region B**: Select features where `REGION = 'B'`.  
+4. **Calculate Statistics**: Compute the mean, median, and standard deviation of `ERROR`, `GROWTH`, `NDVI`, and `POP_DENS` separately for each region.  
+5. **Correlation Analysis**: Calculate the Pearson correlation coefficient between `ERROR` and each covariate (`GROWTH`, `NDVI`, `POP_DENS`) within the entire dataset.  
+6. **Identify Key Covariate**: Determine which covariate has the strongest (most negative or positive) correlation with `ERROR` and report it as the likely driver of higher error in region B.
+
+Based on the provided data 1. /Users/rohanbali/gis_work/run16/cities.gpkg. Data overview: Columns:
+  - CITY_ID: str (sample: B11)
+  - REGION: str (sample: B)
+  - ERROR: float64 (sample: 0.518)
+  - GROWTH: float64 (sample: 5.75)
+  - NDVI: float64 (sample: 0.254)
+  - POP_DENS: int64 (sample: 3172)
+
+Coordinate Reference System: EPSG:4326
+Requirements: 
+1. Look through the available qgis processing tool algorithms in here ['Tessellate', 'Aspect', 'Assign projection', 'Buffer vectors', 'Build virtual raster', 'Build virtual vector', 'Clip raster by extent', 'Clip raster by mask layer', 'Clip vector by extent', 'Clip vector by mask layer', 'Color relief', 'Contour', 'Contour Polygons', 'Convert format', 'Dissolve', 'Execute SQL', 'Extract projection', 'Fill NoData', 'gdal2tiles', 'gdal2xyz', 'Raster information', 'Grid (Moving average)', 'Grid (Data metrics)', 'Grid (Inverse distance to a power)', 'Grid (IDW with nearest neighbor searching)', 'Grid (Linear)', 'Grid (Nearest neighbor)', 'Hillshade', 'Export to PostgreSQL (available connections)', 'Export to PostgreSQL (new connection)', 'Merge', 'Near black', 'Offset curve', 'Vector information', 'Vector information (JSON)', 'One side buffer', 'Build overviews (pyramids)', 'Pansharpening', 'PCT to RGB', 'Points along lines', 'Polygonize (raster to vector)', 'Proximity (raster distance)', 'Raster calculator', 'Rasterize (vector to raster)', 'Rasterize (overwrite with attribute)', 'Rasterize (overwrite with fixed value)', 'Rearrange bands', 'Retile', 'RGB to PCT', 'Roughness', 'Sieve', 'Slope', 'Tile index', 'Topographic Position Index (TPI)', 'Translate (convert format)', 'Terrain Ruggedness Index (TRI)', 'Viewshed', 'Warp (reproject)', 'Add autoincremental field', 'Add field to attributes table', 'Add history metadata', 'Add unique value index field', 'Add X/Y fields to layer', 'Affine transform', 'Aggregate', 'Align rasters', 'Align raster', 'Align points to features', 'Geodesic line split at antimeridian', 'Array of offset (parallel) lines', 'Array of translated features', 'Aspect', 'Assign projection', 'Export atlas layout as image', 'Export atlas layout as PDF (multiple files)', 'Export atlas layout as PDF (single file)', 'Convert B3DM to GLTF', 'Basic statistics for fields', 'Batch Nominatim geocoder', 'Convert spatial bookmarks to layer', 'Boundary', 'Bounding boxes', 'Buffer', 'Variable width buffer (by M value)', 'Calculate expression', 'Overlap analysis', 'Create categorized renderer from styles', 'Cell stack percentile', 'Cell stack percentrank from raster layer', 'Cell stack percent rank from value', 'Cell statistics', 'Centroids', 'Small angles', 'Small polygons', 'Features inside polygon', 'Dangle-end lines', 'Degenerate polygons', 'Duplicated geometries', 'Duplicated vertices', 'Polygons exceeding boundaries', 'Small gaps', 'Holes', 'Lines intersecting each other', 'Lines intersecting other layer', 'Missing vertices along borders', 'Strictly multipart', 'Overlaps', 'Points outside lines', 'Points outside polygons', 'Small segments', 'Self-contacts', 'Self-intersections', 'Sliver polygons', 'Check validity', 'Climb along line', 'Clip', 'Collect geometries', 'Combine style databases', 'Concave hull (by layer)', 'Concave hull (by feature)', 'Conditional branch', 'Convert geometry type', 'Convert GPS data', 'Convert GPX feature type', 'Convert to curved geometries', 'Convex hull', 'Copy layer metadata', 'Count points in polygon', 'Simplify coverage', 'Dissolve coverage', 'Validate coverage', 'Create attribute index', 'Create constant raster layer', 'Create directory', 'Create grid', 'Create points layer from table', 'Create random raster layer (binomial distribution)', 'Create random raster layer (exponential distribution)', 'Create random raster layer (gamma distribution)', 'Create random raster layer (geometric distribution)', 'Create random raster layer (negative binomial distribution)', 'Create random raster layer (normal distribution)', 'Create random raster layer (poisson distribution)', 'Create random raster layer (uniform distribution)', 'Create spatial index', 'DBSCAN clustering', 'Define projection', 'Delaunay triangulation', 'Drop field(s)', 'Delete duplicate geometries', 'Delete holes', 'Densify by count', 'Densify by interval', 'Detect dataset changes', 'Difference', 'Dissolve', 'Download GPS data from device', 'Download vector tiles', 'Drop geometries', 'Drop M/Z values', 'DTM filter (slope-based)', 'Export layers to DXF', 'Equal to frequency', 'Explode HStore Field', 'Explode lines', 'Add geometry attributes', 'Export layer metadata', 'Export layer(s) information', 'Export mesh edges', 'Export mesh faces', 'Export mesh on grid', 'Export mesh vertices', 'Export to spreadsheet', 'Extend lines', 'Create layer from extent', 'Extract binary field', 'Extract by attribute', 'Extract by expression', 'Extract/clip by extent', 'Extract by location', 'Extract labels', 'Extract M values', 'Extract specific vertices', 'Extract vertices', 'Extract within distance', 'Extract Z values', 'Field calculator', 'Download file via HTTP(S)', 'Fill NoData cells', 'Fill sinks (Wang & Liu)', 'Feature filter', 'Filter by geometry type', 'Filter layers by type', 'Filter vertices by M value', 'Filter vertices by Z value', 'Find projection', 'Fix geometries', 'Delete small angles', 'Fix small polygons', 'Delete features', 'Delete duplicated vertices', 'Fill gaps', 'Fill holes', 'Add missing vertices along borders', 'Convert to strictly multipart', 'Delete overlaps', 'Split self-intersecting geometries', 'Flatten relationship', 'Force right-hand-rule', 'Fuzzify raster (gaussian membership)', 'Fuzzify raster (large membership)', 'Fuzzify raster (linear membership)', 'Fuzzify raster (near membership)', 'Fuzzify raster (power membership)', 'Fuzzify raster (small membership)', 'Generate elevation profile image', 'Generate points (pixel centroids) inside polygons', 'Geometry by expression', 'Convert GLTF to vector features', 'Greater than frequency', 'Highest position in raster stack', 'Hillshade', 'HTTP(S) POST/GET request', 'Join by lines (hub lines)', 'Export to PostgreSQL', 'Import geotagged photos', 'Interpolate point on line', 'Intersection', 'Join attributes by location', 'Join attributes by field value', 'Join attributes by location (summary)', 'Join attributes by nearest', 'Keep N biggest parts', 'K-means clustering', 'Convert layer to spatial bookmarks', 'Less than frequency', 'Line density', 'Line intersections', 'Line substring', 'Load layer into project', 'Lowest position in raster stack', 'Mean coordinate(s)', 'Merge lines', 'Merge vector layers', 'Export contours', 'Export cross section dataset values on lines from mesh', 'Export time series values from points of a mesh dataset', 'Rasterize mesh dataset', 'Minimum enclosing circles', 'Raster calculator', 'Raster calculator (virtual)', 'Difference (multiple)', 'Intersection (multiple)', 'Multipart to singleparts', 'Multi-ring buffer (constant distance)', 'Union (multiple)', 'Nearest neighbour analysis', 'Offset lines', 'Open file or URL', 'Order by expression', 'Oriented minimum bounding box', 'Orthogonalize', 'Package layers', 'Raster pixels to points', 'Raster pixels to polygons', 'Point on surface', 'Points along geometry', 'Points to path', 'Create layer from point', 'Pole of inaccessibility', 'Extract layer extent', 'Polygonize', 'Polygons to lines', 'PostgreSQL execute SQL', 'Print layout map extent to layer', 'Export print layout as image', 'Export print layout as PDF', 'Project points (Cartesian)', 'Promote to multipart', 'Raise exception', 'Raise message', 'Raise warning', 'Random extract', 'Random points in extent', 'Random points in polygons', 'Random points on lines', 'Raster boolean AND', 'Raster calculator', 'Convert map to raster', 'Raster layer properties', 'Raster layer statistics', 'Raster layer unique values report', 'Raster layer zonal statistics', 'Raster boolean OR', 'Raster minimum/maximum', 'Raster rank', 'Sample raster values', 'Raster surface volume', 'Reclassify by layer', 'Reclassify by table', 'Rectangles, ovals, diamonds', 'Refactor fields', 'Delete duplicates by attribute', 'Remove duplicate vertices', 'Remove null geometries', 'Rename layer', 'Rename field', 'Repair Shapefile', 'Reproject layer', 'Rescale raster', 'Retain fields', 'Reverse line direction', 'Rotate', 'Roundness', 'Round raster', 'Ruggedness index', 'Save vector features to file', 'Save log to file', 'Extract selected features', 'Segmentize by maximum angle', 'Segmentize by maximum distance', 'Select by location', 'Select within distance', 'Service area (from layer)', 'Service area (from point)', 'Set layer encoding', 'Set layer metadata', 'Set layer style', 'Set metadata fields', 'Set M value from raster', 'Set M value', 'Set project variable', 'Drape (set Z value from raster)', 'Set Z value', 'Shortest line between features', 'Shortest path (layer to point)', 'Shortest path (point to layer)', 'Shortest path (point to point)', 'Extract Shapefile encoding', 'Simplify', 'Single sided buffer', 'Slope', 'Smooth', 'Snap geometries to layer', 'Snap points to grid', 'SpatiaLite execute SQL', 'SpatiaLite execute SQL (registered DB)', 'Split features by character', 'Split lines by maximum length', 'Split vector layer', 'Split with lines', 'ST-DBSCAN clustering', 'String concatenation', 'Create style database from project', 'Subdivide', 'Sum line lengths', 'Surface to polygon', 'Swap X and Y coordinates', 'Symmetrical difference', 'Tapered buffers', 'Generate XYZ tiles (Directory)', 'Generate XYZ tiles (MBTiles)', 'TIN Mesh Creation', 'Transect', 'Transfer annotations from main layer', 'Translate', 'Truncate table', 'Union', 'Update layer metadata', 'Upload GPS data to device', 'Raster calculator (virtual)', 'Voronoi polygons', 'Create wedge buffers', 'Write Vector Tiles (MBTiles)', 'Write Vector Tiles (XYZ)', 'Zonal histogram', 'Zonal minimum/maximum point', 'Zonal statistics (in place)', 'Zonal statistics', 'Assign projection', 'Boundary', 'Clip', 'Convert format', 'Create COPC', 'Density', 'Export to raster', 'Export to raster (using triangulation)', 'Export to vector', 'Filter', 'Information', 'Merge', 'Reproject', 'Thin (by skipping points)', 'Thin (by sampling radius)', 'Tile', 'Build virtual point cloud (VPC)', 'Advanced Python field calculator', 'Bar plot', 'Box plot', 'Distance matrix', 'Distance to nearest hub (line to hub)', 'Distance to nearest hub (points)', 'Eliminate selected polygons', 'Execute SQL', 'Generate points (pixel centroids) along line', 'Heatmap (Kernel Density Estimation)', 'Hypsometric curves', 'IDW interpolation', 'Export to SpatiaLite', 'Concave hull (k-nearest neighbor)', 'Lines to polygons', 'List unique values', 'Mean and standard deviation plot', 'Minimum bounding geometry', 'Points displacement', 'Polar plot', 'PostgreSQL execute and load SQL', 'Random extract within subsets', 'Random points along line', 'Random points in layer bounds', 'Random points inside polygons', 'Random selection', 'Random selection within subsets', 'Raster calculator', 'Raster layer histogram', 'Rectangles, ovals, diamonds (variable)', 'Regular points', 'Relief', 'Vector layer scatterplot 3D', 'Select by attribute', 'Select by expression', 'Set style for raster layer', 'Set style for vector layer', 'Statistics by categories', 'Text to float', 'TIN interpolation', 'Topological coloring', 'Variable distance buffer', 'Vector layer histogram', 'Vector layer scatterplot']. NOTE: DO NOT return the tool ID
+2. NOTE: You are not limited to QGIS python functions, you can also use other python functions asuch as geopandas, numpy, scipy etc.
+3. DO NOT make fake tool. If you cannot find any qgis tool that match, return any tool name that you think is most appropriate based on the descriptions of tools listed in the 'Customized tools' provided. And if you cannot still find suitable tool just use the name of the tool or python library mentioned in the explanation provided
+4. If a task directly mention creation of thematic map. NOTE: Thematic map creation is to be used. DO NOT select any existing QGIS tool for thematic map creation, rather select from the 'Customized tools' provided. E.g, do not select 'categorized renderer from styles'
+5. For a single tool, your response should be in form of this example:  {'Selected tool': "Select by attribute"}
+6. When creating charts or plots such as barchart, barplot, scatterplot etc., you should make use of `seaborn` by default except another method is specified
+7. If the tools mentioned in the explanation is more than one, then the tools should be in the list 'Selected tool'. For example;  {'Selected tool': ["Select by expression", "Select by location"]}
+8. NOTE:  Algorithm `native:rastercalculator` is not the correct ID for Raster Calculator, the correct ID is `native:rastercalc`
+9. NOTE: You are not limited to QGIS python functions, you can also use other python functions asuch as geopandas, numpy, scipy etc.
+10. DO NOT provide Additional details of any tool
+11. When using `gdal:proximity`, ensure all shapefiles are rasterized before using them
+12. Do NOT provide any explanation for your response
+13. DO NOT include ' ```json' and ' ``` ' in your reply
+14. Only do the reprojection as needed when 1) e.g., calculating distances/buffers that needs projected CRS, and the layers have different projections 
+
+Customized tools:
+[{'tool_ID': 'test_1', 'tool_name': 'Testing this file', 'tool_description': 'This creates a map that shows one or more specific data themes or attributes. Examples of themes or attributes include population density, climatic patterns, economic activities, vegetation etc.\nAn example of a thematic map is a choropleth map which uses different colors or shades to represent data ranges.\n'}, {'tool_ID': 'thematic_map_creation', 'tool_name': 'Thematic Map Creation', 'tool_description': 'This creates a map that shows one or more specific data themes or attributes. Examples of themes or attributes include population density, climatic patterns, economic activities, vegetation etc.\nAn example of a thematic map is a choropleth map which uses different colors or shades to represent data ranges.\n'}]
+Example for your reply:  {'Selected tool': ["Select by expression", "Select by location"]}
+
+SELECTED TOOLS:{'Selected tool': ['Thematic Map Creation', 'Select by expression', 'Statistics by categories', 'pandas']}
+
+SELECTED TOOLS: {'Selected tool': ['Thematic Map Creation', 'Select by expression', 'Statistics by categories', 'pandas']}
+
+['Thematic Map Creation', 'Select by expression', 'Statistics by categories', 'pandas']
+TOOL_ID: thematic_map_creation
+Selected tool filename: thematic_map_creation
+File thematic_map_creation is free from errors.
+TOOL_ID: qgis:selectbyexpression
+Selected tool filename: qgis_selectbyexpression
+File qgis_selectbyexpression is free from errors.
+TOOL_ID: qgis:statisticsbycategories
+Selected tool filename: qgis_statisticsbycategories
+File qgis_statisticsbycategories is free from errors.
+Tool documentation for pandas.toml is not provided
+List of selected tool IDs: ['thematic_map_creation', 'qgis:selectbyexpression', 'qgis:statisticsbycategories', 'pandas']
+Tool Id:
+thematic_map_creation
+
+Tool Name:
+Thematic Map Creation
+
+Brief Description:
+This creates a map that shows one or more specific data themes or attributes. Examples of themes or attributes include population density, climatic patterns, economic activities, vegetation etc.
+An example of a thematic map is a choropleth map which uses different colors or shades to represent data ranges.
+
+Parameters:
+
+
+Code Example:
+#Importing necessary modules
+from qgis.core import QgsVectorLayer, QgsProject, QgsVectorLayerJoinInfo, QgsGraduatedSymbolRenderer, QgsMapSettings, QgsSymbol
+from qgis.PyQt.QtCore import QVariant, QSize
+from qgis.PyQt.QtGui import QImage, QPainter, QColor
+    
+def Thematic_Map_Creation():
+    # Load the shapefile
+    path_to_layer = 'D:\\Data\\Data.shp'
+    layer = QgsVectorLayer(path_to_layer, "Population_Distribution", "ogr")
+    QgsProject.instance().addMapLayer(layer)
+    
+    # Create a Graduated Symbol Renderer using 'Population' field
+    symbol = QgsSymbol.defaultSymbol(layer.geometryType())
+    renderer = QgsGraduatedSymbolRenderer('', [])
+    renderer.setClassAttribute('Population')
+    renderer.setMode(QgsGraduatedSymbolRenderer.Quantile) #Use the quantile classificatiom method by default unless specified
+    renderer.updateClasses(layer, 5)
+    
+    # Set the color ramp (green gradient)
+    from qgis.core import QgsGradientColorRamp
+    color1 = QColor(144, 238, 144) # light green
+    color2 = QColor(0, 128, 0)     # dark green
+    color_ramp = QgsGradientColorRamp(color1, color2)
+    renderer.updateColorRamp(color_ramp)
+
+    layer.setRenderer(renderer)
+    layer.triggerRepaint()
+    QgsProject.instance().addMapLayer(layer)
+
+# Execute the function
+Thematic_Map_Creation()
+
+
+Tool Id:
+qgis:selectbyexpression
+
+Tool Name:
+Select by expression
+
+Brief Description:
+This algorithm creates a new vector layer that only contains matching features from an input layer. The criteria for adding features to the resulting layer is based on a QGIS expression.
+
+Parameters:
+INPUT: Input vector layer
+EXPRESSION: Expression to filter the vector layer
+OUTPUT: Specify the output (buffer) layer. One of: Create Temporary Layer (TEMPORARY_OUTPUT); Save to File…;
+        Save to Geopackage…; Save to Database Table…; Append to Layer…
+
+Code Example:
+import processing
+    from qgis.core import QgsProject,QgsVectorLayer
+    def extract_by_expression(input_layer_path):
+        # Define the parameters
+        input_layer = QgsVectorLayer(input_layer_path, "Input Layer", "ogr")
+    
+        # Define the parameters Example below:
+        parameters = {
+            'INPUT': input_layer_path,
+            'EXPRESSION':' "STATEFP"  =\'42\' AND  "Obesity" <30',
+            'OUTPUT': output_layer_path
+        }
+        # Perform the extract by attribute operation
+        result = processing.run("qgis:selectbyexpression", parameters)
+        # Load the selected features as a new layer
+        output_layer = QgsVectorLayer(output_path, 'PA_Obesity<30', 'ogr')
+        QgsProject.instance().addMapLayer(output_layer)
+    input_layer_path = "D:/Data/PrevalenceData.shp"  # path to the input shapefile
+    output_layer_path ="D:/workspace_directory/output_layer.shp"
+    select_by_attribute(input_layer_path)
+
+
+Tool Id:
+qgis:statisticsbycategories
+
+Tool Name:
+Statistics by categories
+
+Brief Description:
+Calculates statistics of a field depending on a parent class. The parent class is a combination of values from other fields.
+
+Full Description:
+Calculates statistics of a field depending on a parent class. The parent class is a combination of values from other fields.
+
+Parameters:
+INPUT: Input vector layer. Input vector layer with unique classes and values. Type: [vector: any] 
+VALUES_FIELD_NAME: Field to calculate statistics on (if empty, only count is calculated) Optional. If empty only the count will be calculated. Type: [tablefield: any] 
+CATEGORIES_FIELD_NAME: Field(s) with categories. The fields that (combined) define the categories. Type: [vector: any] [list] 
+OUTPUT: Statistics by category. Specify the output table for the generated statistics. One of: Create Temporary Layer ( 
+TEMPORARY_OUTPUT ) Save to File… Save to Geopackage… Save to Database Table… The file encoding can also be changed here.. Type: [table] Default: [Create temporary layer] outputs = 
+OUTPUT: Statistics by category. Table containing the statistics. Type: [table]
+
+Code Example:
+from qgis.core import QgsVectorLayer, QgsProject
+import processing
+
+def calculate_statistics_by_category(input_layer_path, output_path):
+    # Load the vector layer
+    input_layer = QgsVectorLayer(input_layer_path, """Input Layer", "ogr")
+
+    # Define the parameters
+    parameters = {
+        'INPUT': input_layer_path,
+        'VALUES_FIELD_NAME': 'value_field',  # Optional
+        'CATEGORIES_FIELD_NAME': ['category_field1', 'category_field2'],  # [list of fields]
+        'OUTPUT': output_path
+    }
+
+    # Run the 'Statistics by category' algorithm
+    result = processing.run('qgis:statisticsbycategories', parameters)
+
+    # Load the result layer to QGIS (if necessary)
+    stats_layer = QgsVectorLayer(result['OUTPUT'], 'Statistics by Category', 'ogr')
+    QgsProject.instance().addMapLayer(stats_layer)
+
+# Define path for input and output layers
+input_layer_path = 'D:/Data/Input_data.shp'
+output_path = 'D:/workspace_directory/output_stats.gpkg'
+
+# Execute the function
+calculate_statistics_by_category(input_layer_path, output_path)
+
+
+
+---------- AI IS GENERATING THE GEOPROCESSING WORKFLOW FOR THE TASK ----------
+
+```python
+import networkx as nx
+G = nx.DiGraph()
+
+# Data nodes
+G.add_node("cities_gpkg_url",
+           node_type="data",
+           data_path="/Users/rohanbali/gis_work/run16/cities.gpkg",
+           description="Cities GeoPackage containing city data")
+
+G.add_node("cities_gdf",
+           node_type="data",
+           data_path="",
+           description="Loaded cities GeoDataFrame")
+
+G.add_node("styled_cities_gdf",
+           node_type="data",
+           data_path="",
+           description="Cities GeoDataFrame styled with graduated color ramp on ERROR")
+
+G.add_node("region_A_gdf",
+           node_type="data",
+           data_path="",
+           description="Cities in region A")
+
+G.add_node("region_B_gdf",
+           node_type="data",
+           data_path="",
+           description="Cities in region B")
+
+G.add_node("stats_A",
+           node_type="data",
+           data_path="",
+           description="Mean, median, std statistics for ERROR, GROWTH, NDVI, POP_DENS in region A")
+
+G.add_node("stats_B",
+           node_type="data",
+           data_path="",
+           description="Mean, median, std statistics for ERROR, GROWTH, NDVI, POP_DENS in region B")
+
+G.add_node("correlations_dict",
+           node_type="data",
+           data_path="",
+           description="Pearson correlation coefficients between ERROR and each covariate for entire dataset")
+
+G.add_node("key_covariate_result",
+           node_type="data",
+           data_path="",
+           description="Identified covariate most strongly correlated with ERROR, likely driver of higher error in region B")
+
+# Operation nodes
+G.add_node("load_cities",
+           node_type="operation",
+           description="Load cities layer from GeoPackage")
+
+G.add_node("symbolize_error",
+           node_type="operation",
+           description="Apply graduated color ramp to ERROR field")
+
+G.add_node("select_region_A",
+           node_type="operation",
+           description="Select cities where REGION = 'A'")
+
+G.add_node("select_region_B",
+           node_type="operation",
+           description="Select cities where REGION = 'B'")
+
+G.add_node("compute_stats_A",
+           node_type="operation",
+           description="Compute mean, median, std for ERROR, GROWTH, NDVI, POP_DENS in region A")
+
+G.add_node("compute_stats_B",
+           node_type="operation",
+           description="Compute mean, median, std for ERROR, GROWTH, NDVI, POP_DENS in region B")
+
+G.add_node("compute_correlations",
+           node_type="operation",
+           description="Calculate Pearson correlation between ERROR and covariates in entire dataset")
+
+G.add_node("identify_key_covariate",
+           node_type="operation",
+           description="Determine covariate with strongest correlation with ERROR")
+
+# Edges: data -> operation
+G.add_edge("cities_gpkg_url", "load_cities")
+G.add_edge("cities_gdf", "symbolize_error")
+G.add_edge("cities_gdf", "select_region_A")
+G.add_edge("cities_gdf", "select_region_B")
+G.add_edge("region_A_gdf", "compute_stats_A")
+G.add_edge("region_B_gdf", "compute_stats_B")
+G.add_edge("cities_gdf", "compute_correlations")
+G.add_edge("correlations_dict", "identify_key_covariate")
+
+# Edges: operation -> data
+G.add_edge("load_cities", "cities_gdf")
+G.add_edge("symbolize_error", "styled_cities_gdf")
+G.add_edge("select_region_A", "region_A_gdf")
+G.add_edge("select_region_B", "region_B_gdf")
+G.add_edge("compute_stats_A", "stats_A")
+G.add_edge("compute_stats_B", "stats_B")
+G.add_edge("compute_correlations", "correlations_dict")
+G.add_edge("identify_key_covariate", "key_covariate_result")
+```
+Graph saved to: /Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/graphs/covariate_explanation.graphml
+GRAPH_SAVED:/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/graphs/covariate_explanation_solution_graph.html
+OPERATION PROMPT: Your role: A professional Geo-information scientist with high proficiency in GIS operations. You are also proficient in using QGIS processing tool python functions and other python functions such as geopandas, numpy etc. to solve a particular task. You know when to use a particular tool and when not to. You are not limited to QGIS tools
+ 
+Your mission: You need to generate Python function to do: : **GIS Task Description**
+
+Map and analyze the model error across the "cities" layer to identify the covariate most responsible for higher error in region B.
+
+**Operations**
+
+1. **Symbolize Error**: Apply a graduated color ramp to the "ERROR" field of the "cities" layer to visually map error values across all cities.  
+2. **Attribute Query – Region A**: Select features where `REGION = 'A'`.  
+3. **Attribute Query – Region B**: Select features where `REGION = 'B'`.  
+4. **Calculate Statistics**: Compute the mean, median, and standard deviation of `ERROR`, `GROWTH`, `NDVI`, and `POP_DENS` separately for each region.  
+5. **Correlation Analysis**: Calculate the Pearson correlation coefficient between `ERROR` and each covariate (`GROWTH`, `NDVI`, `POP_DENS`) within the entire dataset.  
+6. **Identify Key Covariate**: Determine which covariate has the strongest (most negative or positive) correlation with `ERROR` and report it as the likely driver of higher error in region B.Using the following data paths: 1. /Users/rohanbali/gis_work/run16/cities.gpkg. Data overview: Columns:
+  - CITY_ID: str (sample: B11)
+  - REGION: str (sample: B)
+  - ERROR: float64 (sample: 0.518)
+  - GROWTH: float64 (sample: 5.75)
+  - NDVI: float64 (sample: 0.254)
+  - POP_DENS: int64 (sample: 3172)
+
+Coordinate Reference System: EPSG:4326
+And this output directory: /Users/rohanbali/gis_work/run16/workspace
+
+Using the following Selected tool(s): ['thematic_map_creation', 'qgis:selectbyexpression', 'qgis:statisticsbycategories', 'pandas']
+Documentation of the selected tools: 
+Tool Id:
+thematic_map_creation
+
+Tool Name:
+Thematic Map Creation
+
+Brief Description:
+This creates a map that shows one or more specific data themes or attributes. Examples of themes or attributes include population density, climatic patterns, economic activities, vegetation etc.
+An example of a thematic map is a choropleth map which uses different colors or shades to represent data ranges.
+
+Parameters:
+
+
+Code Example:
+#Importing necessary modules
+from qgis.core import QgsVectorLayer, QgsProject, QgsVectorLayerJoinInfo, QgsGraduatedSymbolRenderer, QgsMapSettings, QgsSymbol
+from qgis.PyQt.QtCore import QVariant, QSize
+from qgis.PyQt.QtGui import QImage, QPainter, QColor
+    
+def Thematic_Map_Creation():
+    # Load the shapefile
+    path_to_layer = 'D:\\Data\\Data.shp'
+    layer = QgsVectorLayer(path_to_layer, "Population_Distribution", "ogr")
+    QgsProject.instance().addMapLayer(layer)
+    
+    # Create a Graduated Symbol Renderer using 'Population' field
+    symbol = QgsSymbol.defaultSymbol(layer.geometryType())
+    renderer = QgsGraduatedSymbolRenderer('', [])
+    renderer.setClassAttribute('Population')
+    renderer.setMode(QgsGraduatedSymbolRenderer.Quantile) #Use the quantile classificatiom method by default unless specified
+    renderer.updateClasses(layer, 5)
+    
+    # Set the color ramp (green gradient)
+    from qgis.core import QgsGradientColorRamp
+    color1 = QColor(144, 238, 144) # light green
+    color2 = QColor(0, 128, 0)     # dark green
+    color_ramp = QgsGradientColorRamp(color1, color2)
+    renderer.updateColorRamp(color_ramp)
+
+    layer.setRenderer(renderer)
+    layer.triggerRepaint()
+    QgsProject.instance().addMapLayer(layer)
+
+# Execute the function
+Thematic_Map_Creation()
+
+
+Tool Id:
+qgis:selectbyexpression
+
+Tool Name:
+Select by expression
+
+Brief Description:
+This algorithm creates a new vector layer that only contains matching features from an input layer. The criteria for adding features to the resulting layer is based on a QGIS expression.
+
+Parameters:
+INPUT: Input vector layer
+EXPRESSION: Expression to filter the vector layer
+OUTPUT: Specify the output (buffer) layer. One of: Create Temporary Layer (TEMPORARY_OUTPUT); Save to File…;
+        Save to Geopackage…; Save to Database Table…; Append to Layer…
+
+Code Example:
+import processing
+    from qgis.core import QgsProject,QgsVectorLayer
+    def extract_by_expression(input_layer_path):
+        # Define the parameters
+        input_layer = QgsVectorLayer(input_layer_path, "Input Layer", "ogr")
+    
+        # Define the parameters Example below:
+        parameters = {
+            'INPUT': input_layer_path,
+            'EXPRESSION':' "STATEFP"  =\'42\' AND  "Obesity" <30',
+            'OUTPUT': output_layer_path
+        }
+        # Perform the extract by attribute operation
+        result = processing.run("qgis:selectbyexpression", parameters)
+        # Load the selected features as a new layer
+        output_layer = QgsVectorLayer(output_path, 'PA_Obesity<30', 'ogr')
+        QgsProject.instance().addMapLayer(output_layer)
+    input_layer_path = "D:/Data/PrevalenceData.shp"  # path to the input shapefile
+    output_layer_path ="D:/workspace_directory/output_layer.shp"
+    select_by_attribute(input_layer_path)
+
+
+Tool Id:
+qgis:statisticsbycategories
+
+Tool Name:
+Statistics by categories
+
+Brief Description:
+Calculates statistics of a field depending on a parent class. The parent class is a combination of values from other fields.
+
+Full Description:
+Calculates statistics of a field depending on a parent class. The parent class is a combination of values from other fields.
+
+Parameters:
+INPUT: Input vector layer. Input vector layer with unique classes and values. Type: [vector: any] 
+VALUES_FIELD_NAME: Field to calculate statistics on (if empty, only count is calculated) Optional. If empty only the count will be calculated. Type: [tablefield: any] 
+CATEGORIES_FIELD_NAME: Field(s) with categories. The fields that (combined) define the categories. Type: [vector: any] [list] 
+OUTPUT: Statistics by category. Specify the output table for the generated statistics. One of: Create Temporary Layer ( 
+TEMPORARY_OUTPUT ) Save to File… Save to Geopackage… Save to Database Table… The file encoding can also be changed here.. Type: [table] Default: [Create temporary layer] outputs = 
+OUTPUT: Statistics by category. Table containing the statistics. Type: [table]
+
+Code Example:
+from qgis.core import QgsVectorLayer, QgsProject
+import processing
+
+def calculate_statistics_by_category(input_layer_path, output_path):
+    # Load the vector layer
+    input_layer = QgsVectorLayer(input_layer_path, """Input Layer", "ogr")
+
+    # Define the parameters
+    parameters = {
+        'INPUT': input_layer_path,
+        'VALUES_FIELD_NAME': 'value_field',  # Optional
+        'CATEGORIES_FIELD_NAME': ['category_field1', 'category_field2'],  # [list of fields]
+        'OUTPUT': output_path
+    }
+
+    # Run the 'Statistics by category' algorithm
+    result = processing.run('qgis:statisticsbycategories', parameters)
+
+    # Load the result layer to QGIS (if necessary)
+    stats_layer = QgsVectorLayer(result['OUTPUT'], 'Statistics by Category', 'ogr')
+    QgsProject.instance().addMapLayer(stats_layer)
+
+# Define path for input and output layers
+input_layer_path = 'D:/Data/Input_data.shp'
+output_path = 'D:/workspace_directory/output_stats.gpkg'
+
+# Execute the function
+calculate_statistics_by_category(input_layer_path, output_path)
+
+
+requirements: 
+1. Think step by step
+2. If you need to perform more than one operation, you must perform the operations step by step
+3. Use the selected tools provided
+4. DO NOT include the QGIS initialization code in the script
+5. When using QGIS processing algorithm, use `QgsVectorLayer` to load shapefiles. For example `output_layer = QgsVectorLayer(result['OUTPUT'], 'Layer Name', 'ogr')`
+6. Put your reply into a Python code block, Explanation or conversation can be Python comments at the begining of the code block(enclosed by ```python and ```).
+7. The python code is only in a function named in with the operation name e.g 'perform_idw_interpolation()'. The last line is to execute this function.
+8. Only do the reprojection as needed when 1) e.g., calculating distances/buffers that needs projected CRS, and the layers have different projections
+9. If you need to use `QVariant` should be imported from `PyQt5.Qtcore` and NOT `qgis.core`
+10. If you need to use `QColor` should be imported from `PyQt5.QtGui`
+11. Put your reply into a Python code block (enclosed by python and ), NO explanation or conversation outside the code block.
+12. You are not limited to QGIS python functions/tools, you can also use other python functions asuch as geopandas, numpy, scipy etc.
+13. If you need to use `QgsVectorLayer`, it should always be imported from qgis.core.
+14. DO NOT add validity check and DO NOT raise any exception.
+15. DO NOT raise exceptions messages.
+16. When performing any operation that generates an output vector or raster layer , include the code to load the resulting output layer into QGIS
+17. When performing any operation such as counting of features, generating plots (scatter plot, bar plot), etc., which do not require creation of new layers, do not include load the resulting output layer into QGIS rather print the result
+18. If you need to use any field from the input shapefile layer, first access the fields (example code: `fields = input_layer.fields()`), then select the appropriate field carefully from the list of fields in the layer.
+19. If you need to load a raster layer, use this format `output_layer = QgsRasterLayer(output_path, 'Slope Output')`
+20. When using Raster calculator 'native:rastercalculator' is wrong rather the correct ID for the Raster Calculator algorithm is 'native:rastercalc'.
+21. When creating plots such as barplot, scatterplot etc., usually their result is a html or image file. Always save the file into the specified output directory and print the output layer. Do not Load the output HTML/ or image in QGIS as a standalone resource. 
+22. When creating charts or plots such as barchart, barplot, scatterplot etc., you should make use of `seaborn` by default except another method is specified
+23. When creating a scatterplot, 'native:scatterplot' and 'qgis:scatterplot' are not supported. The correct tool is qgis:vectorlayerscatterplot.
+24. When using tool that is used to generate counts e.g 'Vector information(gdal:ogrinfo), Count points in polygon(native:countpointsinpolygon), etc., don't just print the file path (e.g the html path) but also ensure you print the count(e.g Number of conties)
+25. NOTE: `vector_layer.featureCount()` can be use to generate the count of features
+26. If you are printing any file path (e.g html, png, etc.), Do not include any additional information. just print the file path
+27. When loading a CSV layer as a layer, use this: `'f'file///{csv_path}?delimeter=,''`, assuming the csv is comma-separated, but use the csv_path directly for the Input parameter in join operations.
+28. If you are to use processing algorithm, you do not need to include the code to load a data
+29. For tasks that contains interrogative words such as ('how', 'what', 'why', 'when', 'where', 'which'), ensure that no layers are loaded into the QGIS, instead the result should be printed
+30. If you are creating plots such as barplot, scatterplot etc., usually their result is a html file. Always save the html file into the specified output directory and print the output layer. Do not Load the output HTML in QGIS as a standalone resource.
+31. If you are using the processing algorithm, make the output parameter to be the user's specified output directory . And use `QgsVectorLayer` to load the feature as a new layer: For example `Buffer_layer = QgsVectorLayer(result['OUTPUT'], 'Buffered output', 'ogr')` for the case of a shapefile.
+32. Similarly, if you used geopandas to generate a new layer, use `QgsVectorLayer` to load the feature as a new layer: For example `Buffer_layer = QgsVectorLayer(result['OUTPUT'], 'Buffered output', 'ogr')` for the case of a shapefile.
+33. Whenever a new layer is being saved, ensure the code first checks if a file with the same name already exists in the output directory, and if it doesn't, go ahead and save with the original name, but if same name exist, append a number to the filename to create a unique name, thereby avoiding any errors related to overwriting or saving the layer.
+34. When naming any output layer, choose a name that is concise, descriptive, easy to read, and free of spaces.
+35. Ensure that temporary layer is not used as the output parameter
+36. When using `gdal:proximity`, ensure all shapefiles are rasterized before using them
+37. When performing multi-step tasks that involve creating intermediary layers, ensure there is a waiting period before proceeding to the next step. This allows enough time for the intermediary layers to be fully created, preventing errors such as 'data not found.'
+38. When adding a new field to the a shapefile, it should be noted that the maximum length for field name is 10, so avoid mismatch in the fieldname in the data and in the calculation.When creating a thematic map after joining attributes to a shapefile, ensure that the field name length for the attribute use for thematic map do not exceed 10, if it exceed 10, truncate the field name (E.g, 'White_Population' can be truncated to 'White_Popu'). Adhering to the 10 field name length limit ensures consistency and prevents errors during thematic map creation.
+Set: /Users/rohanbali/gis_work/run16/workspace as the output directory for any operation
+
+---------- AI IS GENERATING THE OPERATION CODE ----------
+
+GENERATED CODE:```python
+# Python script to map and analyze model error across cities, identify the covariate most responsible for higher error in region B.
+# Operations:
+# 1. Symbolize ERROR with a graduated color ramp.
+# 2. Select features for REGION A and REGION B, saving each to a separate Geopackage layer.
+# 3. Compute mean, median, and std of ERROR, GROWTH, NDVI, POP_DENS per region.
+# 4. Compute Pearson correlation coefficients between ERROR and each covariate.
+# 5. Identify and report the covariate with the strongest correlation to ERROR.
+
+import os
+import math
+import pandas as pd
+import geopandas as gpd
+import numpy as np
+import scipy.stats as stats
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsGradientColorRamp,
+    QgsSymbol,
+)
+import processing
+from PyQt5.QtGui import QColor
+from PyQt5.QtCore import QVariant
+
+def _unique_output_path(base_path, ext='.gpkg'):
+    """
+    Generate a unique file path in the output directory.
+    If the file exists, append an incrementing number.
+    """
+    path = base_path + ext
+    counter = 1
+    while os.path.exists(path):
+        path = f"{base_path}_{counter}{ext}"
+        counter += 1
+    return path
+
+def analyze_error_covariates():
+    # Input and output configuration
+    input_layer_path = "/Users/rohanbali/gis_work/run16/cities.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run16/workspace"
+    os.makedirs(output_dir, exist_ok=True)
+
+    # ------------------------------------------------------------------
+    # 1. Symbolize ERROR
+    # ------------------------------------------------------------------
+    cities_layer = QgsVectorLayer(input_layer_path, "cities", "ogr")
+    if not cities_layer.isValid():
+        print("Failed to load input layer.")
+        return
+    QgsProject.instance().addMapLayer(cities_layer)
+
+    # Create graduated renderer on ERROR field
+    symbol = QgsSymbol.defaultSymbol(cities_layer.geometryType())
+    renderer = QgsGraduatedSymbolRenderer('', [])
+    renderer.setClassAttribute('ERROR')
+    renderer.setMode(QgsGraduatedSymbolRenderer.Quantile)
+    renderer.updateClasses(cities_layer, 5)
+
+    # Color ramp from light blue to dark blue
+    color1 = QColor(173, 216, 230)  # LightBlue
+    color2 = QColor(0, 0, 139)      # DarkBlue
+    color_ramp = QgsGradientColorRamp(color1, color2)
+    renderer.updateColorRamp(color_ramp)
+
+    cities_layer.setRenderer(renderer)
+    cities_layer.triggerRepaint()
+
+    # ------------------------------------------------------------------
+    # 2. Select features for REGION A and REGION B
+    # ------------------------------------------------------------------
+    region_a_path = _unique_output_path(os.path.join(output_dir, "cities_region_A"))
+    region_b_path = _unique_output_path(os.path.join(output_dir, "cities_region_B"))
+
+    # REGION A selection
+    params_a = {
+        'INPUT': input_layer_path,
+        'EXPRESSION': '"REGION" = \'A\'',
+        'OUTPUT': region_a_path
+    }
+    result_a = processing.run("qgis:selectbyexpression", params_a)
+    region_a_layer = QgsVectorLayer(result_a['OUTPUT'], 'Region_A', 'ogr')
+    QgsProject.instance().addMapLayer(region_a_layer)
+
+    # REGION B selection
+    params_b = {
+        'INPUT': input_layer_path,
+        'EXPRESSION': '"REGION" = \'B\'',
+        'OUTPUT': region_b_path
+    }
+    result_b = processing.run("qgis:selectbyexpression", params_b)
+    region_b_layer = QgsVectorLayer(result_b['OUTPUT'], 'Region_B', 'ogr')
+    QgsProject.instance().addMapLayer(region_b_layer)
+
+    # ------------------------------------------------------------------
+    # 3. Compute statistics per region
+    # ------------------------------------------------------------------
+    gdf = gpd.read_file(input_layer_path)
+
+    # Fields of interest
+    fields = ['ERROR', 'GROWTH', 'NDVI', 'POP_DENS']
+
+    # Prepare statistics dictionary
+    stats_dict = {}
+    for region, group in gdf.groupby('REGION'):
+        region_stats = {}
+        for field in fields:
+            data = group[field].dropna()
+            region_stats[field] = {
+                'mean': data.mean(),
+                'median': data.median(),
+                'std': data.std(ddof=0)
+            }
+        stats_dict[region] = region_stats
+
+    # Print statistics
+    for region, field_stats in stats_dict.items():
+        print(f"\nStatistics for REGION {region}:")
+        for field, metrics in field_stats.items():
+            print(f"  {field}: mean={metrics['mean']:.4f}, median={metrics['median']:.4f}, std={metrics['std']:.4f}")
+
+    # ------------------------------------------------------------------
+    # 4. Correlation analysis across entire dataset
+    # ------------------------------------------------------------------
+    correlation_results = {}
+    for covariate in ['GROWTH', 'NDVI', 'POP_DENS']:
+        corr_coef = gdf['ERROR'].corr(gdf[covariate])
+        correlation_results[covariate] = corr_coef
+        print(f"\nPearson correlation between ERROR and {covariate}: {corr_coef:.4f}")
+
+    # ------------------------------------------------------------------
+    # 5. Identify key covariate with strongest correlation
+    # ------------------------------------------------------------------
+    # Find covariate with maximum absolute correlation
+    strongest_covariate = max(correlation_results, key=lambda k: abs(correlation_results[k]))
+    strongest_value = correlation_results[strongest_covariate]
+    print(f"\nCovariate most strongly correlated with ERROR: {strongest_covariate} ({strongest_value:.4f})")
+    print("Likely driver of higher error in region B: " + strongest_covariate)
+
+# Execute the function
+analyze_error_covariates()
+```
+
+
+ -------------------------- GENERATED CODE --------------------------------------------
+
+```python
+# Python script to map and analyze model error across cities, identify the covariate most responsible for higher error in region B.
+# Operations:
+# 1. Symbolize ERROR with a graduated color ramp.
+# 2. Select features for REGION A and REGION B, saving each to a separate Geopackage layer.
+# 3. Compute mean, median, and std of ERROR, GROWTH, NDVI, POP_DENS per region.
+# 4. Compute Pearson correlation coefficients between ERROR and each covariate.
+# 5. Identify and report the covariate with the strongest correlation to ERROR.
+
+import os
+import math
+import pandas as pd
+import geopandas as gpd
+import numpy as np
+import scipy.stats as stats
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsGradientColorRamp,
+    QgsSymbol,
+)
+import processing
+from PyQt5.QtGui import QColor
+from PyQt5.QtCore import QVariant
+
+def _unique_output_path(base_path, ext='.gpkg'):
+    """
+    Generate a unique file path in the output directory.
+    If the file exists, append an incrementing number.
+    """
+    path = base_path + ext
+    counter = 1
+    while os.path.exists(path):
+        path = f"{base_path}_{counter}{ext}"
+        counter += 1
+    return path
+
+def analyze_error_covariates():
+    # Input and output configuration
+    input_layer_path = "/Users/rohanbali/gis_work/run16/cities.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run16/workspace"
+    os.makedirs(output_dir, exist_ok=True)
+
+    # ------------------------------------------------------------------
+    # 1. Symbolize ERROR
+    # ------------------------------------------------------------------
+    cities_layer = QgsVectorLayer(input_layer_path, "cities", "ogr")
+    if not cities_layer.isValid():
+        print("Failed to load input layer.")
+        return
+    QgsProject.instance().addMapLayer(cities_layer)
+
+    # Create graduated renderer on ERROR field
+    symbol = QgsSymbol.defaultSymbol(cities_layer.geometryType())
+    renderer = QgsGraduatedSymbolRenderer('', [])
+    renderer.setClassAttribute('ERROR')
+    renderer.setMode(QgsGraduatedSymbolRenderer.Quantile)
+    renderer.updateClasses(cities_layer, 5)
+
+    # Color ramp from light blue to dark blue
+    color1 = QColor(173, 216, 230)  # LightBlue
+    color2 = QColor(0, 0, 139)      # DarkBlue
+    color_ramp = QgsGradientColorRamp(color1, color2)
+    renderer.updateColorRamp(color_ramp)
+
+    cities_layer.setRenderer(renderer)
+    cities_layer.triggerRepaint()
+
+    # ------------------------------------------------------------------
+    # 2. Select features for REGION A and REGION B
+    # ------------------------------------------------------------------
+    region_a_path = _unique_output_path(os.path.join(output_dir, "cities_region_A"))
+    region_b_path = _unique_output_path(os.path.join(output_dir, "cities_region_B"))
+
+    # REGION A selection
+    params_a = {
+        'INPUT': input_layer_path,
+        'EXPRESSION': '"REGION" = \'A\'',
+        'OUTPUT': region_a_path
+    }
+    result_a = processing.run("qgis:selectbyexpression", params_a)
+    region_a_layer = QgsVectorLayer(result_a['OUTPUT'], 'Region_A', 'ogr')
+    QgsProject.instance().addMapLayer(region_a_layer)
+
+    # REGION B selection
+    params_b = {
+        'INPUT': input_layer_path,
+        'EXPRESSION': '"REGION" = \'B\'',
+        'OUTPUT': region_b_path
+    }
+    result_b = processing.run("qgis:selectbyexpression", params_b)
+    region_b_layer = QgsVectorLayer(result_b['OUTPUT'], 'Region_B', 'ogr')
+    QgsProject.instance().addMapLayer(region_b_layer)
+
+    # ------------------------------------------------------------------
+    # 3. Compute statistics per region
+    # ------------------------------------------------------------------
+    gdf = gpd.read_file(input_layer_path)
+
+    # Fields of interest
+    fields = ['ERROR', 'GROWTH', 'NDVI', 'POP_DENS']
+
+    # Prepare statistics dictionary
+    stats_dict = {}
+    for region, group in gdf.groupby('REGION'):
+        region_stats = {}
+        for field in fields:
+            data = group[field].dropna()
+            region_stats[field] = {
+                'mean': data.mean(),
+                'median': data.median(),
+                'std': data.std(ddof=0)
+            }
+        stats_dict[region] = region_stats
+
+    # Print statistics
+    for region, field_stats in stats_dict.items():
+        print(f"\nStatistics for REGION {region}:")
+        for field, metrics in field_stats.items():
+            print(f"  {field}: mean={metrics['mean']:.4f}, median={metrics['median']:.4f}, std={metrics['std']:.4f}")
+
+    # ------------------------------------------------------------------
+    # 4. Correlation analysis across entire dataset
+    # ------------------------------------------------------------------
+    correlation_results = {}
+    for covariate in ['GROWTH', 'NDVI', 'POP_DENS']:
+        corr_coef = gdf['ERROR'].corr(gdf[covariate])
+        correlation_results[covariate] = corr_coef
+        print(f"\nPearson correlation between ERROR and {covariate}: {corr_coef:.4f}")
+
+    # ------------------------------------------------------------------
+    # 5. Identify key covariate with strongest correlation
+    # ------------------------------------------------------------------
+    # Find covariate with maximum absolute correlation
+    strongest_covariate = max(correlation_results, key=lambda k: abs(correlation_results[k]))
+    strongest_value = correlation_results[strongest_covariate]
+    print(f"\nCovariate most strongly correlated with ERROR: {strongest_covariate} ({strongest_value:.4f})")
+    print("Likely driver of higher error in region B: " + strongest_covariate)
+
+# Execute the function
+analyze_error_covariates()
+```
+
+
+-------------- Running code (trial # 1/5) --------------
+
+
+
+Successfully executed code:
+```python
+# Python script to map and analyze model error across cities, identify the covariate most responsible for higher error in region B.
+# Operations:
+# 1. Symbolize ERROR with a graduated color ramp.
+# 2. Select features for REGION A and REGION B, saving each to a separate Geopackage layer.
+# 3. Compute mean, median, and std of ERROR, GROWTH, NDVI, POP_DENS per region.
+# 4. Compute Pearson correlation coefficients between ERROR and each covariate.
+# 5. Identify and report the covariate with the strongest correlation to ERROR.
+
+import os
+import math
+import pandas as pd
+import geopandas as gpd
+import numpy as np
+import scipy.stats as stats
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsGradientColorRamp,
+    QgsSymbol,
+)
+import processing
+from PyQt5.QtGui import QColor
+from PyQt5.QtCore import QVariant
+
+def _unique_output_path(base_path, ext='.gpkg'):
+    """
+    Generate a unique file path in the output directory.
+    If the file exists, append an incrementing number.
+    """
+    path = base_path + ext
+    counter = 1
+    while os.path.exists(path):
+        path = f"{base_path}_{counter}{ext}"
+        counter += 1
+    return path
+
+def analyze_error_covariates():
+    # Input and output configuration
+    input_layer_path = "/Users/rohanbali/gis_work/run16/cities.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run16/workspace"
+    os.makedirs(output_dir, exist_ok=True)
+
+    # ------------------------------------------------------------------
+    # 1. Symbolize ERROR
+    # ------------------------------------------------------------------
+    cities_layer = QgsVectorLayer(input_layer_path, "cities", "ogr")
+    if not cities_layer.isValid():
+        print("Failed to load input layer.")
+        return
+    QgsProject.instance().addMapLayer(cities_layer)
+
+    # Create graduated renderer on ERROR field
+    symbol = QgsSymbol.defaultSymbol(cities_layer.geometryType())
+    renderer = QgsGraduatedSymbolRenderer('', [])
+    renderer.setClassAttribute('ERROR')
+    renderer.setMode(QgsGraduatedSymbolRenderer.Quantile)
+    renderer.updateClasses(cities_layer, 5)
+
+    # Color ramp from light blue to dark blue
+    color1 = QColor(173, 216, 230)  # LightBlue
+    color2 = QColor(0, 0, 139)      # DarkBlue
+    color_ramp = QgsGradientColorRamp(color1, color2)
+    renderer.updateColorRamp(color_ramp)
+
+    cities_layer.setRenderer(renderer)
+    cities_layer.triggerRepaint()
+
+    # ------------------------------------------------------------------
+    # 2. Select features for REGION A and REGION B
+    # ------------------------------------------------------------------
+    region_a_path = _unique_output_path(os.path.join(output_dir, "cities_region_A"))
+    region_b_path = _unique_output_path(os.path.join(output_dir, "cities_region_B"))
+
+    # REGION A selection
+    params_a = {
+        'INPUT': input_layer_path,
+        'EXPRESSION': '"REGION" = \'A\'',
+        'OUTPUT': region_a_path
+    }
+    result_a = processing.run("qgis:selectbyexpression", params_a)
+    region_a_layer = QgsVectorLayer(result_a['OUTPUT'], 'Region_A', 'ogr')
+    QgsProject.instance().addMapLayer(region_a_layer)
+
+    # REGION B selection
+    params_b = {
+        'INPUT': input_layer_path,
+        'EXPRESSION': '"REGION" = \'B\'',
+        'OUTPUT': region_b_path
+    }
+    result_b = processing.run("qgis:selectbyexpression", params_b)
+    region_b_layer = QgsVectorLayer(result_b['OUTPUT'], 'Region_B', 'ogr')
+    QgsProject.instance().addMapLayer(region_b_layer)
+
+    # ------------------------------------------------------------------
+    # 3. Compute statistics per region
+    # ------------------------------------------------------------------
+    gdf = gpd.read_file(input_layer_path)
+
+    # Fields of interest
+    fields = ['ERROR', 'GROWTH', 'NDVI', 'POP_DENS']
+
+    # Prepare statistics dictionary
+    stats_dict = {}
+    for region, group in gdf.groupby('REGION'):
+        region_stats = {}
+        for field in fields:
+            data = group[field].dropna()
+            region_stats[field] = {
+                'mean': data.mean(),
+                'median': data.median(),
+                'std': data.std(ddof=0)
+            }
+        stats_dict[region] = region_stats
+
+    # Print statistics
+    for region, field_stats in stats_dict.items():
+        print(f"\nStatistics for REGION {region}:")
+        for field, metrics in field_stats.items():
+            print(f"  {field}: mean={metrics['mean']:.4f}, median={metrics['median']:.4f}, std={metrics['std']:.4f}")
+
+    # ------------------------------------------------------------------
+    # 4. Correlation analysis across entire dataset
+    # ------------------------------------------------------------------
+    correlation_results = {}
+    for covariate in ['GROWTH', 'NDVI', 'POP_DENS']:
+        corr_coef = gdf['ERROR'].corr(gdf[covariate])
+        correlation_results[covariate] = corr_coef
+        print(f"\nPearson correlation between ERROR and {covariate}: {corr_coef:.4f}")
+
+    # ------------------------------------------------------------------
+    # 5. Identify key covariate with strongest correlation
+    # ------------------------------------------------------------------
+    # Find covariate with maximum absolute correlation
+    strongest_covariate = max(correlation_results, key=lambda k: abs(correlation_results[k]))
+    strongest_value = correlation_results[strongest_covariate]
+    print(f"\nCovariate most strongly correlated with ERROR: {strongest_covariate} ({strongest_value:.4f})")
+    print("Likely driver of higher error in region B: " + strongest_covariate)
+
+# Execute the function
+analyze_error_covariates()
+```
+
+
+--------------- Done ---------------
+
+
+CODE_READY_URLENCODED2:%23%20Python%20script%20to%20map%20and%20analyze%20model%20error%20across%20cities%2C%20identify%20the%20covariate%20most%20responsible%20for%20higher%20error%20in%20region%20B.%0A%23%20Operations%3A%0A%23%201.%20Symbolize%20ERROR%20with%20a%20graduated%20color%20ramp.%0A%23%202.%20Select%20features%20for%20REGION%20A%20and%20REGION%20B%2C%20saving%20each%20to%20a%20separate%20Geopackage%20layer.%0A%23%203.%20Compute%20mean%2C%20median%2C%20and%20std%20of%20ERROR%2C%20GROWTH%2C%20NDVI%2C%20POP_DENS%20per%20region.%0A%23%204.%20Compute%20Pearson%20correlation%20coefficients%20between%20ERROR%20and%20each%20covariate.%0A%23%205.%20Identify%20and%20report%20the%20covariate%20with%20the%20strongest%20correlation%20to%20ERROR.%0A%0Aimport%20os%0Aimport%20math%0Aimport%20pandas%20as%20pd%0Aimport%20geopandas%20as%20gpd%0Aimport%20numpy%20as%20np%0Aimport%20scipy.stats%20as%20stats%0Afrom%20qgis.core%20import%20%28%0A%20%20%20%20QgsVectorLayer%2C%0A%20%20%20%20QgsProject%2C%0A%20%20%20%20QgsGraduatedSymbolRenderer%2C%0A%20%20%20%20QgsGradientColorRamp%2C%0A%20%20%20%20QgsSymbol%2C%0A%29%0Aimport%20processing%0Afrom%20PyQt5.QtGui%20import%20QColor%0Afrom%20PyQt5.QtCore%20import%20QVariant%0A%0Adef%20_unique_output_path%28base_path%2C%20ext%3D%27.gpkg%27%29%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Generate%20a%20unique%20file%20path%20in%20the%20output%20directory.%0A%20%20%20%20If%20the%20file%20exists%2C%20append%20an%20incrementing%20number.%0A%20%20%20%20%22%22%22%0A%20%20%20%20path%20%3D%20base_path%20%2B%20ext%0A%20%20%20%20counter%20%3D%201%0A%20%20%20%20while%20os.path.exists%28path%29%3A%0A%20%20%20%20%20%20%20%20path%20%3D%20f%22%7Bbase_path%7D_%7Bcounter%7D%7Bext%7D%22%0A%20%20%20%20%20%20%20%20counter%20%2B%3D%201%0A%20%20%20%20return%20path%0A%0Adef%20analyze_error_covariates%28%29%3A%0A%20%20%20%20%23%20Input%20and%20output%20configuration%0A%20%20%20%20input_layer_path%20%3D%20%22/Users/rohanbali/gis_work/run16/cities.gpkg%22%0A%20%20%20%20output_dir%20%3D%20%22/Users/rohanbali/gis_work/run16/workspace%22%0A%20%20%20%20os.makedirs%28output_dir%2C%20exist_ok%3DTrue%29%0A%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20%23%201.%20Symbolize%20ERROR%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20cities_layer%20%3D%20QgsVectorLayer%28input_layer_path%2C%20%22cities%22%2C%20%22ogr%22%29%0A%20%20%20%20if%20not%20cities_layer.isValid%28%29%3A%0A%20%20%20%20%20%20%20%20print%28%22Failed%20to%20load%20input%20layer.%22%29%0A%20%20%20%20%20%20%20%20return%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28cities_layer%29%0A%0A%20%20%20%20%23%20Create%20graduated%20renderer%20on%20ERROR%20field%0A%20%20%20%20symbol%20%3D%20QgsSymbol.defaultSymbol%28cities_layer.geometryType%28%29%29%0A%20%20%20%20renderer%20%3D%20QgsGraduatedSymbolRenderer%28%27%27%2C%20%5B%5D%29%0A%20%20%20%20renderer.setClassAttribute%28%27ERROR%27%29%0A%20%20%20%20renderer.setMode%28QgsGraduatedSymbolRenderer.Quantile%29%0A%20%20%20%20renderer.updateClasses%28cities_layer%2C%205%29%0A%0A%20%20%20%20%23%20Color%20ramp%20from%20light%20blue%20to%20dark%20blue%0A%20%20%20%20color1%20%3D%20QColor%28173%2C%20216%2C%20230%29%20%20%23%20LightBlue%0A%20%20%20%20color2%20%3D%20QColor%280%2C%200%2C%20139%29%20%20%20%20%20%20%23%20DarkBlue%0A%20%20%20%20color_ramp%20%3D%20QgsGradientColorRamp%28color1%2C%20color2%29%0A%20%20%20%20renderer.updateColorRamp%28color_ramp%29%0A%0A%20%20%20%20cities_layer.setRenderer%28renderer%29%0A%20%20%20%20cities_layer.triggerRepaint%28%29%0A%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20%23%202.%20Select%20features%20for%20REGION%20A%20and%20REGION%20B%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20region_a_path%20%3D%20_unique_output_path%28os.path.join%28output_dir%2C%20%22cities_region_A%22%29%29%0A%20%20%20%20region_b_path%20%3D%20_unique_output_path%28os.path.join%28output_dir%2C%20%22cities_region_B%22%29%29%0A%0A%20%20%20%20%23%20REGION%20A%20selection%0A%20%20%20%20params_a%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%27INPUT%27%3A%20input_layer_path%2C%0A%20%20%20%20%20%20%20%20%27EXPRESSION%27%3A%20%27%22REGION%22%20%3D%20%5C%27A%5C%27%27%2C%0A%20%20%20%20%20%20%20%20%27OUTPUT%27%3A%20region_a_path%0A%20%20%20%20%7D%0A%20%20%20%20result_a%20%3D%20processing.run%28%22qgis%3Aselectbyexpression%22%2C%20params_a%29%0A%20%20%20%20region_a_layer%20%3D%20QgsVectorLayer%28result_a%5B%27OUTPUT%27%5D%2C%20%27Region_A%27%2C%20%27ogr%27%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28region_a_layer%29%0A%0A%20%20%20%20%23%20REGION%20B%20selection%0A%20%20%20%20params_b%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%27INPUT%27%3A%20input_layer_path%2C%0A%20%20%20%20%20%20%20%20%27EXPRESSION%27%3A%20%27%22REGION%22%20%3D%20%5C%27B%5C%27%27%2C%0A%20%20%20%20%20%20%20%20%27OUTPUT%27%3A%20region_b_path%0A%20%20%20%20%7D%0A%20%20%20%20result_b%20%3D%20processing.run%28%22qgis%3Aselectbyexpression%22%2C%20params_b%29%0A%20%20%20%20region_b_layer%20%3D%20QgsVectorLayer%28result_b%5B%27OUTPUT%27%5D%2C%20%27Region_B%27%2C%20%27ogr%27%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28region_b_layer%29%0A%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20%23%203.%20Compute%20statistics%20per%20region%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20gdf%20%3D%20gpd.read_file%28input_layer_path%29%0A%0A%20%20%20%20%23%20Fields%20of%20interest%0A%20%20%20%20fields%20%3D%20%5B%27ERROR%27%2C%20%27GROWTH%27%2C%20%27NDVI%27%2C%20%27POP_DENS%27%5D%0A%0A%20%20%20%20%23%20Prepare%20statistics%20dictionary%0A%20%20%20%20stats_dict%20%3D%20%7B%7D%0A%20%20%20%20for%20region%2C%20group%20in%20gdf.groupby%28%27REGION%27%29%3A%0A%20%20%20%20%20%20%20%20region_stats%20%3D%20%7B%7D%0A%20%20%20%20%20%20%20%20for%20field%20in%20fields%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20data%20%3D%20group%5Bfield%5D.dropna%28%29%0A%20%20%20%20%20%20%20%20%20%20%20%20region_stats%5Bfield%5D%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27mean%27%3A%20data.mean%28%29%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27median%27%3A%20data.median%28%29%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27std%27%3A%20data.std%28ddof%3D0%29%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20stats_dict%5Bregion%5D%20%3D%20region_stats%0A%0A%20%20%20%20%23%20Print%20statistics%0A%20%20%20%20for%20region%2C%20field_stats%20in%20stats_dict.items%28%29%3A%0A%20%20%20%20%20%20%20%20print%28f%22%5CnStatistics%20for%20REGION%20%7Bregion%7D%3A%22%29%0A%20%20%20%20%20%20%20%20for%20field%2C%20metrics%20in%20field_stats.items%28%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print%28f%22%20%20%7Bfield%7D%3A%20mean%3D%7Bmetrics%5B%27mean%27%5D%3A.4f%7D%2C%20median%3D%7Bmetrics%5B%27median%27%5D%3A.4f%7D%2C%20std%3D%7Bmetrics%5B%27std%27%5D%3A.4f%7D%22%29%0A%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20%23%204.%20Correlation%20analysis%20across%20entire%20dataset%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20correlation_results%20%3D%20%7B%7D%0A%20%20%20%20for%20covariate%20in%20%5B%27GROWTH%27%2C%20%27NDVI%27%2C%20%27POP_DENS%27%5D%3A%0A%20%20%20%20%20%20%20%20corr_coef%20%3D%20gdf%5B%27ERROR%27%5D.corr%28gdf%5Bcovariate%5D%29%0A%20%20%20%20%20%20%20%20correlation_results%5Bcovariate%5D%20%3D%20corr_coef%0A%20%20%20%20%20%20%20%20print%28f%22%5CnPearson%20correlation%20between%20ERROR%20and%20%7Bcovariate%7D%3A%20%7Bcorr_coef%3A.4f%7D%22%29%0A%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20%23%205.%20Identify%20key%20covariate%20with%20strongest%20correlation%0A%20%20%20%20%23%20------------------------------------------------------------------%0A%20%20%20%20%23%20Find%20covariate%20with%20maximum%20absolute%20correlation%0A%20%20%20%20strongest_covariate%20%3D%20max%28correlation_results%2C%20key%3Dlambda%20k%3A%20abs%28correlation_results%5Bk%5D%29%29%0A%20%20%20%20strongest_value%20%3D%20correlation_results%5Bstrongest_covariate%5D%0A%20%20%20%20print%28f%22%5CnCovariate%20most%20strongly%20correlated%20with%20ERROR%3A%20%7Bstrongest_covariate%7D%20%28%7Bstrongest_value%3A.4f%7D%29%22%29%0A%20%20%20%20print%28%22Likely%20driver%20of%20higher%20error%20in%20region%20B%3A%20%22%20%2B%20strongest_covariate%29%0A%0A%23%20Execute%20the%20function%0Aanalyze_error_covariates%28%29
+Error reporting skipped (not using gibd-services API key)
+Output: 
+Output: Statistics for REGION A:
+Output:   ERROR: mean=0.4737, median=0.4810, std=0.0331
+Output:   GROWTH: mean=1.3860, median=1.2450, std=0.4863
+Output:   NDVI: mean=0.4082, median=0.4000, std=0.0958
+Output:   POP_DENS: mean=1353.4333, median=1211.5000, std=623.5769
+Output: 
+Output: Statistics for REGION B:
+Output:   ERROR: mean=0.5934, median=0.6080, std=0.0509
+Output:   GROWTH: mean=4.8586, median=4.9350, std=0.7347
+Output:   NDVI: mean=0.4185, median=0.3830, std=0.0951
+Output:   POP_DENS: mean=2187.5714, median=1929.5000, std=908.1468
+Output: 
+Output: Pearson correlation between ERROR and GROWTH: 0.6396
+Output: 
+Output: Pearson correlation between ERROR and NDVI: 0.0225
+Output: 
+Output: Pearson correlation between ERROR and POP_DENS: 0.3318
+Output: 
+Output: Covariate most strongly correlated with ERROR: GROWTH (0.6396)
+Output: Likely driver of higher error in region B: GROWTH

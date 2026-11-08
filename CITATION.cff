@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this test, please cite it as below."
+title: "GIS agent traps: does a GIS agent check its conclusions, or only its operations?"
+authors:
+  - family-names: Bali
+    given-names: Rohan
+version: "1.0"
+date-released: 2026-11-09
+license: MIT
+keywords:
+  - autonomous GIS
+  - GIS agents
+  - self-verification
+  - LLM evaluation
+  - pre-registration
+repository-code: "https://github.com/rohanbalixz/gis-agent-traps"
+url: "https://github.com/rohanbalixz/gis-agent-traps"

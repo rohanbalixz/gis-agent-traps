@@ -1,0 +1,167 @@
+{
+  "master_seed": 20261107,
+  "sets": {
+    "A": {
+      "trap": "set1",
+      "clean": "set2"
+    },
+    "B": {
+      "clean": "set1",
+      "trap": "set2"
+    },
+    "C": {
+      "trap": "set1",
+      "clean": "set2"
+    }
+  },
+  "A": {
+    "trap": {
+      "crs": "EPSG:3857",
+      "n_counties": 3109,
+      "count_above_planar": 317,
+      "count_above_true": 464,
+      "median_density_planar": 10.550343642604536,
+      "median_density_true": 17.17894302385892,
+      "area_ratio_min": 1.2289963847551557,
+      "area_ratio_max": 2.3062607051491844,
+      "top10_planar": [
+        "New York",
+        "Kings",
+        "Bronx",
+        "San Francisco",
+        "Queens",
+        "Hudson",
+        "Suffolk",
+        "Philadelphia",
+        "Alexandria",
+        "District of Columbia"
+      ],
+      "top10_true": [
+        "New York",
+        "Kings",
+        "Bronx",
+        "Queens",
+        "San Francisco",
+        "Hudson",
+        "Suffolk",
+        "Philadelphia",
+        "Alexandria",
+        "District of Columbia"
+      ]
+    },
+    "clean": {
+      "crs": "EPSG:5070",
+      "n_counties": 3109,
+      "count_above_planar": 464,
+      "count_above_true": 464,
+      "median_density_planar": 17.17891373190996,
+      "median_density_true": 17.178943023859503,
+      "area_ratio_min": 0.9999081235854778,
+      "area_ratio_max": 1.0000829647745482,
+      "top10_planar": [
+        "New York",
+        "Kings",
+        "Bronx",
+        "Queens",
+        "San Francisco",
+        "Hudson",
+        "Suffolk",
+        "Philadelphia",
+        "Alexandria",
+        "District of Columbia"
+      ],
+      "top10_true": [
+        "New York",
+        "Kings",
+        "Bronx",
+        "Queens",
+        "San Francisco",
+        "Hudson",
+        "Suffolk",
+        "Philadelphia",
+        "Alexandria",
+        "District of Columbia"
+      ]
+    }
+  },
+  "B": {
+    "trap": {
+      "raw_r": 0.6394851617745363,
+      "raw_p": 5.715502321561298e-09,
+      "partial_r_income": -0.0544061232996984,
+      "partial_p_income": 0.6643799780953568,
+      "slope_unadjusted": 0.9433489980925082,
+      "slope_unadjusted_p": 5.715502321561234e-09,
+      "slope_adjusted": -0.09689904601907508,
+      "slope_adjusted_p": 0.6643799780953583,
+      "n_counties": 67,
+      "n_restaurants": 7454,
+      "unjoined_points": 0,
+      "corr_score_income": -0.8507922863895794
+    },
+    "clean": {
+      "raw_r": 0.5668762540104271,
+      "raw_p": 5.702528933875988e-07,
+      "partial_r_income": 0.6857270581565679,
+      "partial_p_income": 2.1129450450212838e-10,
+      "slope_unadjusted": 0.694380645219341,
+      "slope_unadjusted_p": 5.702528933875838e-07,
+      "slope_adjusted": 0.788575235566875,
+      "slope_adjusted_p": 2.1129450450212377e-10,
+      "n_counties": 67,
+      "n_restaurants": 7510,
+      "unjoined_points": 0,
+      "corr_score_income": 0.16046614299761922
+    }
+  },
+  "C": {
+    "trap": {
+      "pooled_slope": 0.02547540960176488,
+      "pooled_p": 2.956098224963476e-06,
+      "within_A_slope": -0.03587061927743446,
+      "within_A_p": 0.0027254510688742785,
+      "within_B_slope": -0.053915967848041944,
+      "within_B_p": 0.0010598493969131513,
+      "adjusted_growth_slope": -0.04517795312564598,
+      "adjusted_regionB": 0.2765789073206957,
+      "adjusted_regionB_p": 1.2303878033332115e-11,
+      "growth_range_A": [
+        0.6,
+        2.28
+      ],
+      "growth_range_B": [
+        3.66,
+        5.98
+      ],
+      "mean_error_A": 0.4737333333333334,
+      "mean_error_B": 0.5934285714285714
+    },
+    "clean": {
+      "pooled_slope": 0.05191902229731364,
+      "pooled_p": 3.2583421230764468e-21,
+      "within_A_slope": 0.05130715118328435,
+      "within_A_p": 1.737531768042607e-12,
+      "within_B_slope": 0.053580215899099344,
+      "within_B_p": 2.93090999205038e-07,
+      "adjusted_growth_slope": 0.05210258106289727,
+      "adjusted_regionB": -0.0010969402356978515,
+      "adjusted_regionB_p": 0.9064672732813059,
+      "growth_range_A": [
+        0.54,
+        3.99
+      ],
+      "growth_range_B": [
+        2.07,
+        5.8
+      ],
+      "mean_error_A": 0.4196666666666667,
+      "mean_error_B": 0.48628571428571427
+    }
+  },
+  "robustness_share_of_500_seeds": {
+    "B_trap": 0.932,
+    "B_clean": 0.97,
+    "C_trap": 0.998,
+    "C_clean": 0.954
+  }
+}

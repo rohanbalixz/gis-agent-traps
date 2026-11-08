@@ -1,0 +1,11 @@
+# Conda environment for rerunning the agent (QGIS 3.x on Qt 5; the plugin needs PyQt5).
+# Without the version cap, conda resolves QGIS 4 on Qt 6, which the plugin can't load.
+name: qgis
+channels:
+  - conda-forge
+dependencies:
+  - qgis>=3.40,<4
+  - geopandas>=1.0
+  - pyogrio
+  - scipy
+  - matplotlib

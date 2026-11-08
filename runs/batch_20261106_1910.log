@@ -1,0 +1,36 @@
+[19:10:09] start B-set1-r1
+[19:17:19] end   B-set1-r1  exit=0  status=completed
+[19:17:21] start A-set1-r2
+[19:29:46] end   A-set1-r2  exit=0  status=code-failed-5-times
+[19:29:46] start C-set1-r2
+[19:39:59] end   C-set1-r2  exit=0  status=code-failed-5-times
+[19:39:59] start A-set1-r3
+[19:51:40] end   A-set1-r3  exit=0  status=completed
+[19:51:40] start B-set2-r1
+[19:55:52] end   B-set2-r1  exit=0  status=completed
+[19:55:52] start A-set1-r1
+[20:06:48] end   A-set1-r1  exit=0  status=code-failed-5-times
+[20:06:48] start A-set2-r1
+[20:17:01] end   A-set2-r1  exit=0  status=completed
+[20:17:02] start B-set1-r3
+[21:23:59] end   B-set1-r3  exit=0  status=code-failed-5-times
+[21:23:59] start B-set2-r2
+[21:33:00] end   B-set2-r2  exit=0  status=completed
+[21:33:00] start C-set2-r2
+[21:38:33] end   C-set2-r2  exit=0  status=completed
+[21:38:33] start A-set2-r2
+[21:43:18] end   A-set2-r2  exit=0  status=completed
+[21:43:18] start C-set1-r1
+[21:47:18] end   C-set1-r1  exit=0  status=completed
+[21:47:18] start C-set2-r1
+[21:51:49] end   C-set2-r1  exit=0  status=completed
+[21:51:49] start B-set1-r2
+[21:57:33] end   B-set1-r2  exit=0  status=completed
+[21:57:33] start A-set2-r3
+[22:06:10] end   A-set2-r3  exit=0  status=code-failed-5-times
+[22:06:10] start C-set1-r3
+[22:10:17] end   C-set1-r3  exit=0  status=completed
+[22:10:17] start B-set2-r3
+[22:16:06] end   B-set2-r3  exit=0  status=completed
+[22:16:07] start C-set2-r3
+[22:22:17] end   C-set2-r3  exit=0  status=completed

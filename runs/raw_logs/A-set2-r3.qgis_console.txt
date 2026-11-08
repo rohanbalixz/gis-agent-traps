@@ -1,0 +1,2213 @@
+Warning: Broken filename passed to function
+Warning: Broken filename passed to function
+Warning: Broken filename passed to function
+Warning: Broken filename passed to function
+Warning: Broken filename passed to function
+(PDAL Error) Can't load library /Users/rohanbali/miniforge3/envs/qgis/lib/libpdal_plugin_reader_tiledb.dylib: Failed to load "/Users/rohanbali/miniforge3/envs/qgis/lib/libpdal_plugin_reader_tiledb.dylib": dlopen(/Users/rohanbali/miniforge3/envs/qgis/lib/libpdal_plugin_reader_tiledb.dylib, 0x0002): Library not loaded: /opt/homebrew/opt/lz4/lib/liblz4.1.dylib
+  Referenced from: <4297A1AB-4327-3687-94E1-9F8BDC55A14A> /Users/rohanbali/miniforge3/envs/qgis/lib/libtiledb.dylib
+  Reason: tried: '/opt/homebrew/opt/lz4/lib/liblz4.1.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/lz4/lib/liblz4.1.dylib' (no such file), '/opt/homebrew/opt/lz4/lib/liblz4.1.dylib' (no such file), '/usr/local/lib/liblz4.1.dylib' (no such file), '/usr/lib/liblz4.1.dylib' (no such file, not in dyld cache)(PDAL Error) Can't load library /Users/rohanbali/miniforge3/envs/qgis/lib/libpdal_plugin_writer_tiledb.dylib: Failed to load "/Users/rohanbali/miniforge3/envs/qgis/lib/libpdal_plugin_writer_tiledb.dylib": dlopen(/Users/rohanbali/miniforge3/envs/qgis/lib/libpdal_plugin_writer_tiledb.dylib, 0x0002): Library not loaded: /opt/homebrew/opt/lz4/lib/liblz4.1.dylib
+  Referenced from: <4297A1AB-4327-3687-94E1-9F8BDC55A14A> /Users/rohanbali/miniforge3/envs/qgis/lib/libtiledb.dylib
+  Reason: tried: '/opt/homebrew/opt/lz4/lib/liblz4.1.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/lz4/lib/liblz4.1.dylib' (no such file), '/opt/homebrew/opt/lz4/lib/liblz4.1.dylib' (no such file), '/usr/local/lib/liblz4.1.dylib' (no such file), '/usr/lib/liblz4.1.dylib' (no such file, not in dyld cache)Warning: Broken filename passed to function
+Warning: Populating font family aliases took 47 ms. Replace uses of missing font family "Sans-serif" with one that exists to avoid this cost. 
+Warning: Broken filename passed to function
+Warning: Broken filename passed to function
+Warning: Broken filename passed to function
+Warning: Broken filename passed to function
+Warning: QWidget::insertAction: Attempt to insert null action
+Warning: QWidget::insertAction: Attempt to insert null action
+Warning: QWidget::insertAction: Attempt to insert null action
+Warning: Broken filename passed to function
+[trap-driver] run A-set2-r3  model gpt-oss:20b  data_path:
+/Users/rohanbali/gis_work/run15/counties.gpkg
+
+========================================================
+User: The layer "counties" contains every county in the contiguous United States, with its 2023 population in the field POP2023. Calculate the population density of each county in people per square kilometre and show it on a map with graduated colours. Then tell me how many counties have a density above 100 people per square kilometre, and what the median county density is.
+========================================================
+========================================================
+MODEL CONFIGURATION INFO
+========================================================
+Selected Model: gpt-oss:20b
+Model Type: Local Model via Ollama Provider
+Provider Class: OllamaProvider
+Provider Type: Ollama Local Provider
+API Method: OpenAI-compatible endpoint
+Base URL: http://128.118.54.16:11434/v1
+API Key: Not required
+========================================================
+AI IS ANALYZING THE TASK ...
+========================================================
+task_name: CountyDensity
+========================================================
+AI IS EXAMINING THE DATA ...
+========================================================
+data overview: ['/Users/rohanbali/gis_work/run15/counties.gpkg. Data overview: Columns:\n  - GEOID: str (sample: 12017)\n  - NAME: str (sample: Citrus)\n  - STATE_NAME: str (sample: Florida)\n  - POP2023: int64 (sample: 166696)\n\nCoordinate Reference System: EPSG:5070']
+{'data_locations': [{'location': '/Users/rohanbali/gis_work/run15/counties.gpkg', 'format': 'GeoPackage', 'meta_str': 'Columns:\n  - GEOID: str (sample: 12017)\n  - NAME: str (sample: Citrus)\n  - STATE_NAME: str (sample: Florida)\n  - POP2023: int64 (sample: 166696)\n\nCoordinate Reference System: EPSG:5070'}]}
+You are a GIS expert. Convert the following user request into a **short GIS task description**.
+
+Think step-by-step about what the user is asking, and then write a **concise, domain-specific description** of the GIS task they want to perform.
+
+REQUIREMENTS:
+- Do NOT include steps related to data acquisition or downloading data.
+- Do NOT mention specific software (e.g., GIS software, ArcGIS, QGIS).
+- Focus ONLY on spatial analysis or GIS operations.
+- Use technical GIS terms where appropriate (e.g., Buffer, Clip, Reproject, Attribute Query).
+- Check the Data overview and select the suitable layers, attributes, and field information that would be needed for the User Query.
+- Please include the layer name in the task description.
+- Please always check the {data_overview} for projection information and the {User_Query} before deciding whether reprojection of data is needed is needed.
+- Only do the reprojection as needed when 1) e.g., calculating distances/buffers that needs projected CRS, and the layers have different projections.
+- Start each operation with a label
+- Output ONLY the GIS task description - do NOT explain your reasoning.
+
+INSTRUCTIONS:
+1. 
+    Let's think step-by-step:
+    1. What is the user’s goal?
+    2. What data is available (review the Data overview for layers, attributes, and field information)?
+    3. What GIS operations are needed to achieve it?
+    4. Write a concise summary of the GIS task
+    5. List labeled operations to perform.
+
+
+Data Overview:
+1. /Users/rohanbali/gis_work/run15/counties.gpkg. Data overview: Columns:
+  - GEOID: str (sample: 12017)
+  - NAME: str (sample: Citrus)
+  - STATE_NAME: str (sample: Florida)
+  - POP2023: int64 (sample: 166696)
+
+Coordinate Reference System: EPSG:5070
+
+User Query:
+"The layer "counties" contains every county in the contiguous United States, with its 2023 population in the field POP2023. Calculate the population density of each county in people per square kilometre and show it on a map with graduated colours. Then tell me how many counties have a density above 100 people per square kilometre, and what the median county density is."
+
+Output Sample:
+
+Perform a spatial analysis to identify and quantify the counties in Pennsylvania with suitability for tree planting based on annual rainfall. Specifically, execute the following tasks:
+1. **Attribute Query**: Filter the counties of Pennsylvania using an attribute query to select those with annual rainfall greater than 2.5 inches.
+2. **Calculate Area**: Determine the total area of the selected counties to assess the percentage of Pennsylvania suitable for tree planting.
+3. **Count Features**: Count the number of counties meeting the rainfall criteria to identify how many are suitable for tree planting.
+
+
+
+TASK_BREAKDOWN:**GIS Task Description**
+
+Using the *counties* layer (EPSG:5070), perform the following operations:
+
+1. **Calculate Area (km²)**: Create a new field `AREA_KM2` by dividing the layer’s geometry area (in m²) by 1,000,000.
+2. **Calculate Population Density**: Add field `POP_DENSITY` = `POP2023` / `AREA_KM2` (people / km²).
+3. **Classify for Graduated Map**: Apply a graduated symbology to `POP_DENSITY` (e.g., <10, 10–20, 20–50, 50–100, >100) for mapping.
+4. **Attribute Query (Density > 100)**: Select features where `POP_DENSITY` > 100.
+5. **Count Features**: Count selected features to report the number of counties above 100 people / km².
+6. **Calculate Median Density**: Compute the median value of `POP_DENSITY` across all counties.
+
+_
+========================================================
+AI IS SELECTING THE APPROPRIATE TOOL(S) ...
+========================================================
+TOOL SELECT PROMPT ---------------------: Your role:  A professional Geo-information scientist with high proficiency in Geographic Information System (GIS) operations. You also have excellent proficiency in QGIS to perform GIS operations. You are very familiar with QGIS Processing toolbox. You have super proficency in python programming. 
+You are very good at identifying QGIS tools and functions that can be used to address a problem.
+ 
+Your mission:  You are to provide a structured response to contain the tool mentioned in this explanation and analysis of the tools to be used to perform a task: : **GIS Task Description**
+
+Using the *counties* layer (EPSG:5070), perform the following operations:
+
+1. **Calculate Area (km²)**: Create a new field `AREA_KM2` by dividing the layer’s geometry area (in m²) by 1,000,000.
+2. **Calculate Population Density**: Add field `POP_DENSITY` = `POP2023` / `AREA_KM2` (people / km²).
+3. **Classify for Graduated Map**: Apply a graduated symbology to `POP_DENSITY` (e.g., <10, 10–20, 20–50, 50–100, >100) for mapping.
+4. **Attribute Query (Density > 100)**: Select features where `POP_DENSITY` > 100.
+5. **Count Features**: Count selected features to report the number of counties above 100 people / km².
+6. **Calculate Median Density**: Compute the median value of `POP_DENSITY` across all counties.
+
+Based on the provided data 1. /Users/rohanbali/gis_work/run15/counties.gpkg. Data overview: Columns:
+  - GEOID: str (sample: 12017)
+  - NAME: str (sample: Citrus)
+  - STATE_NAME: str (sample: Florida)
+  - POP2023: int64 (sample: 166696)
+
+Coordinate Reference System: EPSG:5070
+Requirements: 
+1. Look through the available qgis processing tool algorithms in here ['Tessellate', 'Aspect', 'Assign projection', 'Buffer vectors', 'Build virtual raster', 'Build virtual vector', 'Clip raster by extent', 'Clip raster by mask layer', 'Clip vector by extent', 'Clip vector by mask layer', 'Color relief', 'Contour', 'Contour Polygons', 'Convert format', 'Dissolve', 'Execute SQL', 'Extract projection', 'Fill NoData', 'gdal2tiles', 'gdal2xyz', 'Raster information', 'Grid (Moving average)', 'Grid (Data metrics)', 'Grid (Inverse distance to a power)', 'Grid (IDW with nearest neighbor searching)', 'Grid (Linear)', 'Grid (Nearest neighbor)', 'Hillshade', 'Export to PostgreSQL (available connections)', 'Export to PostgreSQL (new connection)', 'Merge', 'Near black', 'Offset curve', 'Vector information', 'Vector information (JSON)', 'One side buffer', 'Build overviews (pyramids)', 'Pansharpening', 'PCT to RGB', 'Points along lines', 'Polygonize (raster to vector)', 'Proximity (raster distance)', 'Raster calculator', 'Rasterize (vector to raster)', 'Rasterize (overwrite with attribute)', 'Rasterize (overwrite with fixed value)', 'Rearrange bands', 'Retile', 'RGB to PCT', 'Roughness', 'Sieve', 'Slope', 'Tile index', 'Topographic Position Index (TPI)', 'Translate (convert format)', 'Terrain Ruggedness Index (TRI)', 'Viewshed', 'Warp (reproject)', 'Add autoincremental field', 'Add field to attributes table', 'Add history metadata', 'Add unique value index field', 'Add X/Y fields to layer', 'Affine transform', 'Aggregate', 'Align rasters', 'Align raster', 'Align points to features', 'Geodesic line split at antimeridian', 'Array of offset (parallel) lines', 'Array of translated features', 'Aspect', 'Assign projection', 'Export atlas layout as image', 'Export atlas layout as PDF (multiple files)', 'Export atlas layout as PDF (single file)', 'Convert B3DM to GLTF', 'Basic statistics for fields', 'Batch Nominatim geocoder', 'Convert spatial bookmarks to layer', 'Boundary', 'Bounding boxes', 'Buffer', 'Variable width buffer (by M value)', 'Calculate expression', 'Overlap analysis', 'Create categorized renderer from styles', 'Cell stack percentile', 'Cell stack percentrank from raster layer', 'Cell stack percent rank from value', 'Cell statistics', 'Centroids', 'Small angles', 'Small polygons', 'Features inside polygon', 'Dangle-end lines', 'Degenerate polygons', 'Duplicated geometries', 'Duplicated vertices', 'Polygons exceeding boundaries', 'Small gaps', 'Holes', 'Lines intersecting each other', 'Lines intersecting other layer', 'Missing vertices along borders', 'Strictly multipart', 'Overlaps', 'Points outside lines', 'Points outside polygons', 'Small segments', 'Self-contacts', 'Self-intersections', 'Sliver polygons', 'Check validity', 'Climb along line', 'Clip', 'Collect geometries', 'Combine style databases', 'Concave hull (by layer)', 'Concave hull (by feature)', 'Conditional branch', 'Convert geometry type', 'Convert GPS data', 'Convert GPX feature type', 'Convert to curved geometries', 'Convex hull', 'Copy layer metadata', 'Count points in polygon', 'Simplify coverage', 'Dissolve coverage', 'Validate coverage', 'Create attribute index', 'Create constant raster layer', 'Create directory', 'Create grid', 'Create points layer from table', 'Create random raster layer (binomial distribution)', 'Create random raster layer (exponential distribution)', 'Create random raster layer (gamma distribution)', 'Create random raster layer (geometric distribution)', 'Create random raster layer (negative binomial distribution)', 'Create random raster layer (normal distribution)', 'Create random raster layer (poisson distribution)', 'Create random raster layer (uniform distribution)', 'Create spatial index', 'DBSCAN clustering', 'Define projection', 'Delaunay triangulation', 'Drop field(s)', 'Delete duplicate geometries', 'Delete holes', 'Densify by count', 'Densify by interval', 'Detect dataset changes', 'Difference', 'Dissolve', 'Download GPS data from device', 'Download vector tiles', 'Drop geometries', 'Drop M/Z values', 'DTM filter (slope-based)', 'Export layers to DXF', 'Equal to frequency', 'Explode HStore Field', 'Explode lines', 'Add geometry attributes', 'Export layer metadata', 'Export layer(s) information', 'Export mesh edges', 'Export mesh faces', 'Export mesh on grid', 'Export mesh vertices', 'Export to spreadsheet', 'Extend lines', 'Create layer from extent', 'Extract binary field', 'Extract by attribute', 'Extract by expression', 'Extract/clip by extent', 'Extract by location', 'Extract labels', 'Extract M values', 'Extract specific vertices', 'Extract vertices', 'Extract within distance', 'Extract Z values', 'Field calculator', 'Download file via HTTP(S)', 'Fill NoData cells', 'Fill sinks (Wang & Liu)', 'Feature filter', 'Filter by geometry type', 'Filter layers by type', 'Filter vertices by M value', 'Filter vertices by Z value', 'Find projection', 'Fix geometries', 'Delete small angles', 'Fix small polygons', 'Delete features', 'Delete duplicated vertices', 'Fill gaps', 'Fill holes', 'Add missing vertices along borders', 'Convert to strictly multipart', 'Delete overlaps', 'Split self-intersecting geometries', 'Flatten relationship', 'Force right-hand-rule', 'Fuzzify raster (gaussian membership)', 'Fuzzify raster (large membership)', 'Fuzzify raster (linear membership)', 'Fuzzify raster (near membership)', 'Fuzzify raster (power membership)', 'Fuzzify raster (small membership)', 'Generate elevation profile image', 'Generate points (pixel centroids) inside polygons', 'Geometry by expression', 'Convert GLTF to vector features', 'Greater than frequency', 'Highest position in raster stack', 'Hillshade', 'HTTP(S) POST/GET request', 'Join by lines (hub lines)', 'Export to PostgreSQL', 'Import geotagged photos', 'Interpolate point on line', 'Intersection', 'Join attributes by location', 'Join attributes by field value', 'Join attributes by location (summary)', 'Join attributes by nearest', 'Keep N biggest parts', 'K-means clustering', 'Convert layer to spatial bookmarks', 'Less than frequency', 'Line density', 'Line intersections', 'Line substring', 'Load layer into project', 'Lowest position in raster stack', 'Mean coordinate(s)', 'Merge lines', 'Merge vector layers', 'Export contours', 'Export cross section dataset values on lines from mesh', 'Export time series values from points of a mesh dataset', 'Rasterize mesh dataset', 'Minimum enclosing circles', 'Raster calculator', 'Raster calculator (virtual)', 'Difference (multiple)', 'Intersection (multiple)', 'Multipart to singleparts', 'Multi-ring buffer (constant distance)', 'Union (multiple)', 'Nearest neighbour analysis', 'Offset lines', 'Open file or URL', 'Order by expression', 'Oriented minimum bounding box', 'Orthogonalize', 'Package layers', 'Raster pixels to points', 'Raster pixels to polygons', 'Point on surface', 'Points along geometry', 'Points to path', 'Create layer from point', 'Pole of inaccessibility', 'Extract layer extent', 'Polygonize', 'Polygons to lines', 'PostgreSQL execute SQL', 'Print layout map extent to layer', 'Export print layout as image', 'Export print layout as PDF', 'Project points (Cartesian)', 'Promote to multipart', 'Raise exception', 'Raise message', 'Raise warning', 'Random extract', 'Random points in extent', 'Random points in polygons', 'Random points on lines', 'Raster boolean AND', 'Raster calculator', 'Convert map to raster', 'Raster layer properties', 'Raster layer statistics', 'Raster layer unique values report', 'Raster layer zonal statistics', 'Raster boolean OR', 'Raster minimum/maximum', 'Raster rank', 'Sample raster values', 'Raster surface volume', 'Reclassify by layer', 'Reclassify by table', 'Rectangles, ovals, diamonds', 'Refactor fields', 'Delete duplicates by attribute', 'Remove duplicate vertices', 'Remove null geometries', 'Rename layer', 'Rename field', 'Repair Shapefile', 'Reproject layer', 'Rescale raster', 'Retain fields', 'Reverse line direction', 'Rotate', 'Roundness', 'Round raster', 'Ruggedness index', 'Save vector features to file', 'Save log to file', 'Extract selected features', 'Segmentize by maximum angle', 'Segmentize by maximum distance', 'Select by location', 'Select within distance', 'Service area (from layer)', 'Service area (from point)', 'Set layer encoding', 'Set layer metadata', 'Set layer style', 'Set metadata fields', 'Set M value from raster', 'Set M value', 'Set project variable', 'Drape (set Z value from raster)', 'Set Z value', 'Shortest line between features', 'Shortest path (layer to point)', 'Shortest path (point to layer)', 'Shortest path (point to point)', 'Extract Shapefile encoding', 'Simplify', 'Single sided buffer', 'Slope', 'Smooth', 'Snap geometries to layer', 'Snap points to grid', 'SpatiaLite execute SQL', 'SpatiaLite execute SQL (registered DB)', 'Split features by character', 'Split lines by maximum length', 'Split vector layer', 'Split with lines', 'ST-DBSCAN clustering', 'String concatenation', 'Create style database from project', 'Subdivide', 'Sum line lengths', 'Surface to polygon', 'Swap X and Y coordinates', 'Symmetrical difference', 'Tapered buffers', 'Generate XYZ tiles (Directory)', 'Generate XYZ tiles (MBTiles)', 'TIN Mesh Creation', 'Transect', 'Transfer annotations from main layer', 'Translate', 'Truncate table', 'Union', 'Update layer metadata', 'Upload GPS data to device', 'Raster calculator (virtual)', 'Voronoi polygons', 'Create wedge buffers', 'Write Vector Tiles (MBTiles)', 'Write Vector Tiles (XYZ)', 'Zonal histogram', 'Zonal minimum/maximum point', 'Zonal statistics (in place)', 'Zonal statistics', 'Assign projection', 'Boundary', 'Clip', 'Convert format', 'Create COPC', 'Density', 'Export to raster', 'Export to raster (using triangulation)', 'Export to vector', 'Filter', 'Information', 'Merge', 'Reproject', 'Thin (by skipping points)', 'Thin (by sampling radius)', 'Tile', 'Build virtual point cloud (VPC)', 'Advanced Python field calculator', 'Bar plot', 'Box plot', 'Distance matrix', 'Distance to nearest hub (line to hub)', 'Distance to nearest hub (points)', 'Eliminate selected polygons', 'Execute SQL', 'Generate points (pixel centroids) along line', 'Heatmap (Kernel Density Estimation)', 'Hypsometric curves', 'IDW interpolation', 'Export to SpatiaLite', 'Concave hull (k-nearest neighbor)', 'Lines to polygons', 'List unique values', 'Mean and standard deviation plot', 'Minimum bounding geometry', 'Points displacement', 'Polar plot', 'PostgreSQL execute and load SQL', 'Random extract within subsets', 'Random points along line', 'Random points in layer bounds', 'Random points inside polygons', 'Random selection', 'Random selection within subsets', 'Raster calculator', 'Raster layer histogram', 'Rectangles, ovals, diamonds (variable)', 'Regular points', 'Relief', 'Vector layer scatterplot 3D', 'Select by attribute', 'Select by expression', 'Set style for raster layer', 'Set style for vector layer', 'Statistics by categories', 'Text to float', 'TIN interpolation', 'Topological coloring', 'Variable distance buffer', 'Vector layer histogram', 'Vector layer scatterplot']. NOTE: DO NOT return the tool ID
+2. NOTE: You are not limited to QGIS python functions, you can also use other python functions asuch as geopandas, numpy, scipy etc.
+3. DO NOT make fake tool. If you cannot find any qgis tool that match, return any tool name that you think is most appropriate based on the descriptions of tools listed in the 'Customized tools' provided. And if you cannot still find suitable tool just use the name of the tool or python library mentioned in the explanation provided
+4. If a task directly mention creation of thematic map. NOTE: Thematic map creation is to be used. DO NOT select any existing QGIS tool for thematic map creation, rather select from the 'Customized tools' provided. E.g, do not select 'categorized renderer from styles'
+5. For a single tool, your response should be in form of this example:  {'Selected tool': "Select by attribute"}
+6. When creating charts or plots such as barchart, barplot, scatterplot etc., you should make use of `seaborn` by default except another method is specified
+7. If the tools mentioned in the explanation is more than one, then the tools should be in the list 'Selected tool'. For example;  {'Selected tool': ["Select by expression", "Select by location"]}
+8. NOTE:  Algorithm `native:rastercalculator` is not the correct ID for Raster Calculator, the correct ID is `native:rastercalc`
+9. NOTE: You are not limited to QGIS python functions, you can also use other python functions asuch as geopandas, numpy, scipy etc.
+10. DO NOT provide Additional details of any tool
+11. When using `gdal:proximity`, ensure all shapefiles are rasterized before using them
+12. Do NOT provide any explanation for your response
+13. DO NOT include ' ```json' and ' ``` ' in your reply
+14. Only do the reprojection as needed when 1) e.g., calculating distances/buffers that needs projected CRS, and the layers have different projections 
+
+Customized tools:
+[{'tool_ID': 'test_1', 'tool_name': 'Testing this file', 'tool_description': 'This creates a map that shows one or more specific data themes or attributes. Examples of themes or attributes include population density, climatic patterns, economic activities, vegetation etc.\nAn example of a thematic map is a choropleth map which uses different colors or shades to represent data ranges.\n'}, {'tool_ID': 'thematic_map_creation', 'tool_name': 'Thematic Map Creation', 'tool_description': 'This creates a map that shows one or more specific data themes or attributes. Examples of themes or attributes include population density, climatic patterns, economic activities, vegetation etc.\nAn example of a thematic map is a choropleth map which uses different colors or shades to represent data ranges.\n'}]
+Example for your reply:  {'Selected tool': ["Select by expression", "Select by location"]}
+
+SELECTED TOOLS:{'Selected tool': ["Add field to attributes table", "Calculate expression", "Thematic Map Creation", "Select by expression", "Basic statistics for fields"]}
+
+SELECTED TOOLS: {'Selected tool': ['Add field to attributes table', 'Calculate expression', 'Thematic Map Creation', 'Select by expression', 'Basic statistics for fields']}
+
+['Add field to attributes table', 'Calculate expression', 'Thematic Map Creation', 'Select by expression', 'Basic statistics for fields']
+TOOL_ID: native:addfieldtoattributestable
+Selected tool filename: native_addfieldtoattributestable
+File native_addfieldtoattributestable is free from errors.
+TOOL_ID: native:calculateexpression
+Selected tool filename: native_calculateexpression
+File native_calculateexpression is free from errors.
+TOOL_ID: thematic_map_creation
+Selected tool filename: thematic_map_creation
+File thematic_map_creation is free from errors.
+TOOL_ID: qgis:selectbyexpression
+Selected tool filename: qgis_selectbyexpression
+File qgis_selectbyexpression is free from errors.
+Tool documentation for native_basicstatisticsforfields.toml is not provided
+List of selected tool IDs: ['native:addfieldtoattributestable', 'native:calculateexpression', 'thematic_map_creation', 'qgis:selectbyexpression', 'native:basicstatisticsforfields']
+Tool Id:
+native:addfieldtoattributestable
+
+Tool Name:
+Add field to attributes table
+
+Brief Description:
+Adds a new field to a vector layer.
+
+Full Description:
+Adds a new field to a vector layer.
+The name and characteristics of the attribute are defined as parameters.
+The new attribute is not added to the input layer but a new layer is generated instead.
+
+Parameters:
+INPUT: Input layer. The input layer. Type: [vector: any] 
+FIELD_NAME: Field name. Name of the new field. Type: [string] 
+FIELD_TYPE: Field type. Type of the new field. You can choose between: 0 — Integer (32 bit) 1 — Decimal (double) 2 — Text (string) 3 — Boolean 4 — Date 5 — Time 6 — Date & Time 7 — Binary Object 
+(BLOB) 8 — String List 9 — Integer List 10 — Decimal (double) List. Type: [enumeration] Default: 0 
+FIELD_LENGTH: Field length. Length of the field. Type: [number] Default: 10 
+FIELD_PRECISION: Field precision. Precision of the field. Useful with Float field type.. Type: [number] Default: 0 
+FIELD_ALIAS: Field alias 
+NEW in 3.32 Optional. Set a name to use as alias for the field. Not supported by all format types.. Type: [string] 
+FIELD_COMMENT: Field comment 
+NEW in 3.32 Optional. Store a comment describing the field. Not supported by all format types.. Type: [string] 
+OUTPUT: Added. Specify the output vector layer.One of: Create Temporary Layer ( 
+TEMPORARY_OUTPUT ) Save to File… Save to Geopackage… Save to Database Table… Append to Layer… The file encoding can also be changed here.. Type: [same as input] Default: [Create temporary layer] outputs = 
+OUTPUT: Added. Vector layer with new field added. Type: [same as input]
+
+Code Example:
+from qgis.core import QgsVectorLayer, QgsProject
+import processing
+
+def add_field_to_attribute_table():
+    # Define the input and output paths
+    input_path = 'D:/input_layer.shp'
+    output_dir = 'C:/Users/Output'
+    output_file_name = """output_layer_with_new_field.shp"
+    output_path = f"{output_dir}/{output_file_name}"
+    # Load the input layer
+    input_layer = QgsVectorLayer(input_path, "Input Layer", "ogr")
+    # Set add field processing parameters
+    add_field_params = {
+        'INPUT': input_path,
+        'FIELD_NAME': 'NewField',
+        'FIELD_TYPE': 0,  # Integer (32 bit)
+        'FIELD_LENGTH': 10,
+        'FIELD_PRECISION': 0,
+        'FIELD_ALIAS': '',
+        'FIELD_COMMENT': '',
+        'OUTPUT': output_path
+    }
+    # Run add field to attributes table
+    result = processing.run("native:addfieldtoattributestable", add_field_params)
+    # Load the resulting layer
+    output_layer = QgsVectorLayer(result['OUTPUT'], 'Layer_with_new_field', 'ogr')
+    QgsProject.instance().addMapLayer(output_layer)
+# Execute the function
+add_field_to_attribute_table()
+
+
+Tool Id:
+native:calculateexpression
+
+Tool Name:
+Calculate expression
+
+Brief Description:
+NEWin3.34
+
+Full Description:
+NEWin3.34
+It calculates the result of a QGIS expression and eliminates the need to use the same expression multiple times throughout a model when the same result is required more than once. Additionally, it enables use cases that would otherwise not be possible. For instance, you can generate a timestamp value once and use it multiple times within the model, if the timestamp were recalculated every time, the values would vary during the model’s runtime.
+
+Parameters:
+INPUT: Input. Expression to calculate. Type: [expression] outputs = 
+OUTPUT: Value. Calculated result value, the data type of theoutput will vary based on the specific expression usedin the algorithm.. Type: [Result Value]
+
+Code Example:
+import processing
+from qgis.core import QgsExpression, QgsProject, QgsVectorLayer
+
+def calculate_expression(input_layer_path, output_path):
+    # Load the input layer
+    input_layer = QgsVectorLayer(input_layer_path, """Input Layer", "ogr")
+    
+    # Define expression parameters
+    parameters = {
+        'INPUT': input_layer_path,
+        'EXPRESSION': 'attribute + 1',  # Specify the expression to be calculated
+        'OUTPUT': output_path
+    }
+    # Perform expression calculation
+    result = processing.run("native:calculateexpression", parameters)
+    
+    # Load the output layer
+    output_layer = QgsVectorLayer(result['OUTPUT'], 'Calculated_Expression_Output', 'ogr')
+    QgsProject.instance().addMapLayer(output_layer)
+
+# Example usage of the function
+input_layer_path = "D:/Data/InputLayer.shp"
+output_layer_path = "D:/Data/Calculated_Expression_Output.shp"
+calculate_expression(input_layer_path, output_layer_path)
+
+
+Tool Id:
+thematic_map_creation
+
+Tool Name:
+Thematic Map Creation
+
+Brief Description:
+This creates a map that shows one or more specific data themes or attributes. Examples of themes or attributes include population density, climatic patterns, economic activities, vegetation etc.
+An example of a thematic map is a choropleth map which uses different colors or shades to represent data ranges.
+
+Parameters:
+
+
+Code Example:
+#Importing necessary modules
+from qgis.core import QgsVectorLayer, QgsProject, QgsVectorLayerJoinInfo, QgsGraduatedSymbolRenderer, QgsMapSettings, QgsSymbol
+from qgis.PyQt.QtCore import QVariant, QSize
+from qgis.PyQt.QtGui import QImage, QPainter, QColor
+    
+def Thematic_Map_Creation():
+    # Load the shapefile
+    path_to_layer = 'D:\\Data\\Data.shp'
+    layer = QgsVectorLayer(path_to_layer, "Population_Distribution", "ogr")
+    QgsProject.instance().addMapLayer(layer)
+    
+    # Create a Graduated Symbol Renderer using 'Population' field
+    symbol = QgsSymbol.defaultSymbol(layer.geometryType())
+    renderer = QgsGraduatedSymbolRenderer('', [])
+    renderer.setClassAttribute('Population')
+    renderer.setMode(QgsGraduatedSymbolRenderer.Quantile) #Use the quantile classificatiom method by default unless specified
+    renderer.updateClasses(layer, 5)
+    
+    # Set the color ramp (green gradient)
+    from qgis.core import QgsGradientColorRamp
+    color1 = QColor(144, 238, 144) # light green
+    color2 = QColor(0, 128, 0)     # dark green
+    color_ramp = QgsGradientColorRamp(color1, color2)
+    renderer.updateColorRamp(color_ramp)
+
+    layer.setRenderer(renderer)
+    layer.triggerRepaint()
+    QgsProject.instance().addMapLayer(layer)
+
+# Execute the function
+Thematic_Map_Creation()
+
+
+Tool Id:
+qgis:selectbyexpression
+
+Tool Name:
+Select by expression
+
+Brief Description:
+This algorithm creates a new vector layer that only contains matching features from an input layer. The criteria for adding features to the resulting layer is based on a QGIS expression.
+
+Parameters:
+INPUT: Input vector layer
+EXPRESSION: Expression to filter the vector layer
+OUTPUT: Specify the output (buffer) layer. One of: Create Temporary Layer (TEMPORARY_OUTPUT); Save to File…;
+        Save to Geopackage…; Save to Database Table…; Append to Layer…
+
+Code Example:
+import processing
+    from qgis.core import QgsProject,QgsVectorLayer
+    def extract_by_expression(input_layer_path):
+        # Define the parameters
+        input_layer = QgsVectorLayer(input_layer_path, "Input Layer", "ogr")
+    
+        # Define the parameters Example below:
+        parameters = {
+            'INPUT': input_layer_path,
+            'EXPRESSION':' "STATEFP"  =\'42\' AND  "Obesity" <30',
+            'OUTPUT': output_layer_path
+        }
+        # Perform the extract by attribute operation
+        result = processing.run("qgis:selectbyexpression", parameters)
+        # Load the selected features as a new layer
+        output_layer = QgsVectorLayer(output_path, 'PA_Obesity<30', 'ogr')
+        QgsProject.instance().addMapLayer(output_layer)
+    input_layer_path = "D:/Data/PrevalenceData.shp"  # path to the input shapefile
+    output_layer_path ="D:/workspace_directory/output_layer.shp"
+    select_by_attribute(input_layer_path)
+
+
+
+---------- AI IS GENERATING THE GEOPROCESSING WORKFLOW FOR THE TASK ----------
+
+```python
+import networkx as nx
+G = nx.DiGraph()
+
+# 1. Load counties GeoPackage path
+G.add_node("counties_gpkg_path",
+           node_type="data",
+           data_path="/Users/rohanbali/gis_work/run15/counties.gpkg",
+           description="Path to counties GeoPackage")
+
+# 2. Load counties into GeoDataFrame
+G.add_node("load_counties",
+           node_type="operation",
+           data_path="",
+           description="Load counties GeoPackage into GeoDataFrame")
+G.add_edge("counties_gpkg_path", "load_counties")
+
+# 3. Counties GeoDataFrame
+G.add_node("counties_gdf",
+           node_type="data",
+           data_path="",
+           description="Counties GeoDataFrame")
+G.add_edge("load_counties", "counties_gdf")
+
+# 4. Add AREA_KM2 field
+G.add_node("add_area_km2",
+           node_type="operation",
+           data_path="",
+           description="Add AREA_KM2 field (area in km²)")
+G.add_edge("counties_gdf", "add_area_km2")
+
+# 5. Counties with area
+G.add_node("counties_with_area",
+           node_type="data",
+           data_path="",
+           description="Counties with AREA_KM2 field")
+G.add_edge("add_area_km2", "counties_with_area")
+
+# 6. Add POP_DENSITY field
+G.add_node("add_pop_density",
+           node_type="operation",
+           data_path="",
+           description="Add POP_DENSITY field (POP2023 / AREA_KM2)")
+G.add_edge("counties_with_area", "add_pop_density")
+
+# 7. Counties with density
+G.add_node("counties_with_density",
+           node_type="data",
+           data_path="",
+           description="Counties with POP_DENSITY field")
+G.add_edge("add_pop_density", "counties_with_density")
+
+# 8. Classify density for graduated symbology
+G.add_node("classify_density",
+           node_type="operation",
+           data_path="",
+           description="Classify POP_DENSITY for graduated symbology")
+G.add_edge("counties_with_density", "classify_density")
+
+# 9. Counties classified
+G.add_node("counties_classified",
+           node_type="data",
+           data_path="",
+           description="Counties with density classification")
+G.add_edge("classify_density", "counties_classified")
+
+# 10. Select counties with POP_DENSITY > 100
+G.add_node("select_high_density",
+           node_type="operation",
+           data_path="",
+           description="Select counties where POP_DENSITY > 100")
+G.add_edge("counties_with_density", "select_high_density")
+
+# 11. High density counties
+G.add_node("high_density_counties",
+           node_type="data",
+           data_path="",
+           description="Selected counties with POP_DENSITY > 100")
+G.add_edge("select_high_density", "high_density_counties")
+
+# 12. Count high density features
+G.add_node("count_high_density",
+           node_type="operation",
+           data_path="",
+           description="Count number of high density counties")
+G.add_edge("high_density_counties", "count_high_density")
+
+# 13. High density count
+G.add_node("high_density_count",
+           node_type="data",
+           data_path="",
+           description="Number of counties with POP_DENSITY > 100")
+G.add_edge("count_high_density", "high_density_count")
+
+# 14. Compute median POP_DENSITY
+G.add_node("compute_median_density",
+           node_type="operation",
+           data_path="",
+           description="Compute median POP_DENSITY across all counties")
+G.add_edge("counties_with_density", "compute_median_density")
+
+# 15. Median density value
+G.add_node("median_density_value",
+           node_type="data",
+           data_path="",
+           description="Median population density value")
+G.add_edge("compute_median_density", "median_density_value")
+
+# 16. Create final report
+G.add_node("report_results",
+           node_type="operation",
+           data_path="",
+           description="Create final report with high density count and median density")
+G.add_edge("high_density_count", "report_results")
+G.add_edge("median_density_value", "report_results")
+
+# 17. Final report text
+G.add_node("final_report",
+           node_type="data",
+           data_path="",
+           description="Final report text with results")
+G.add_edge("report_results", "final_report")
+```
+Graph saved to: /Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/graphs/CountyDensity.graphml
+GRAPH_SAVED:/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/graphs/CountyDensity_solution_graph_2.html
+OPERATION PROMPT: Your role: A professional Geo-information scientist with high proficiency in GIS operations. You are also proficient in using QGIS processing tool python functions and other python functions such as geopandas, numpy etc. to solve a particular task. You know when to use a particular tool and when not to. You are not limited to QGIS tools
+ 
+Your mission: You need to generate Python function to do: : **GIS Task Description**
+
+Using the *counties* layer (EPSG:5070), perform the following operations:
+
+1. **Calculate Area (km²)**: Create a new field `AREA_KM2` by dividing the layer’s geometry area (in m²) by 1,000,000.
+2. **Calculate Population Density**: Add field `POP_DENSITY` = `POP2023` / `AREA_KM2` (people / km²).
+3. **Classify for Graduated Map**: Apply a graduated symbology to `POP_DENSITY` (e.g., <10, 10–20, 20–50, 50–100, >100) for mapping.
+4. **Attribute Query (Density > 100)**: Select features where `POP_DENSITY` > 100.
+5. **Count Features**: Count selected features to report the number of counties above 100 people / km².
+6. **Calculate Median Density**: Compute the median value of `POP_DENSITY` across all counties.Using the following data paths: 1. /Users/rohanbali/gis_work/run15/counties.gpkg. Data overview: Columns:
+  - GEOID: str (sample: 12017)
+  - NAME: str (sample: Citrus)
+  - STATE_NAME: str (sample: Florida)
+  - POP2023: int64 (sample: 166696)
+
+Coordinate Reference System: EPSG:5070
+And this output directory: /Users/rohanbali/gis_work/run15/workspace
+
+Using the following Selected tool(s): ['native:addfieldtoattributestable', 'native:calculateexpression', 'thematic_map_creation', 'qgis:selectbyexpression', 'native:basicstatisticsforfields']
+Documentation of the selected tools: 
+Tool Id:
+native:addfieldtoattributestable
+
+Tool Name:
+Add field to attributes table
+
+Brief Description:
+Adds a new field to a vector layer.
+
+Full Description:
+Adds a new field to a vector layer.
+The name and characteristics of the attribute are defined as parameters.
+The new attribute is not added to the input layer but a new layer is generated instead.
+
+Parameters:
+INPUT: Input layer. The input layer. Type: [vector: any] 
+FIELD_NAME: Field name. Name of the new field. Type: [string] 
+FIELD_TYPE: Field type. Type of the new field. You can choose between: 0 — Integer (32 bit) 1 — Decimal (double) 2 — Text (string) 3 — Boolean 4 — Date 5 — Time 6 — Date & Time 7 — Binary Object 
+(BLOB) 8 — String List 9 — Integer List 10 — Decimal (double) List. Type: [enumeration] Default: 0 
+FIELD_LENGTH: Field length. Length of the field. Type: [number] Default: 10 
+FIELD_PRECISION: Field precision. Precision of the field. Useful with Float field type.. Type: [number] Default: 0 
+FIELD_ALIAS: Field alias 
+NEW in 3.32 Optional. Set a name to use as alias for the field. Not supported by all format types.. Type: [string] 
+FIELD_COMMENT: Field comment 
+NEW in 3.32 Optional. Store a comment describing the field. Not supported by all format types.. Type: [string] 
+OUTPUT: Added. Specify the output vector layer.One of: Create Temporary Layer ( 
+TEMPORARY_OUTPUT ) Save to File… Save to Geopackage… Save to Database Table… Append to Layer… The file encoding can also be changed here.. Type: [same as input] Default: [Create temporary layer] outputs = 
+OUTPUT: Added. Vector layer with new field added. Type: [same as input]
+
+Code Example:
+from qgis.core import QgsVectorLayer, QgsProject
+import processing
+
+def add_field_to_attribute_table():
+    # Define the input and output paths
+    input_path = 'D:/input_layer.shp'
+    output_dir = 'C:/Users/Output'
+    output_file_name = """output_layer_with_new_field.shp"
+    output_path = f"{output_dir}/{output_file_name}"
+    # Load the input layer
+    input_layer = QgsVectorLayer(input_path, "Input Layer", "ogr")
+    # Set add field processing parameters
+    add_field_params = {
+        'INPUT': input_path,
+        'FIELD_NAME': 'NewField',
+        'FIELD_TYPE': 0,  # Integer (32 bit)
+        'FIELD_LENGTH': 10,
+        'FIELD_PRECISION': 0,
+        'FIELD_ALIAS': '',
+        'FIELD_COMMENT': '',
+        'OUTPUT': output_path
+    }
+    # Run add field to attributes table
+    result = processing.run("native:addfieldtoattributestable", add_field_params)
+    # Load the resulting layer
+    output_layer = QgsVectorLayer(result['OUTPUT'], 'Layer_with_new_field', 'ogr')
+    QgsProject.instance().addMapLayer(output_layer)
+# Execute the function
+add_field_to_attribute_table()
+
+
+Tool Id:
+native:calculateexpression
+
+Tool Name:
+Calculate expression
+
+Brief Description:
+NEWin3.34
+
+Full Description:
+NEWin3.34
+It calculates the result of a QGIS expression and eliminates the need to use the same expression multiple times throughout a model when the same result is required more than once. Additionally, it enables use cases that would otherwise not be possible. For instance, you can generate a timestamp value once and use it multiple times within the model, if the timestamp were recalculated every time, the values would vary during the model’s runtime.
+
+Parameters:
+INPUT: Input. Expression to calculate. Type: [expression] outputs = 
+OUTPUT: Value. Calculated result value, the data type of theoutput will vary based on the specific expression usedin the algorithm.. Type: [Result Value]
+
+Code Example:
+import processing
+from qgis.core import QgsExpression, QgsProject, QgsVectorLayer
+
+def calculate_expression(input_layer_path, output_path):
+    # Load the input layer
+    input_layer = QgsVectorLayer(input_layer_path, """Input Layer", "ogr")
+    
+    # Define expression parameters
+    parameters = {
+        'INPUT': input_layer_path,
+        'EXPRESSION': 'attribute + 1',  # Specify the expression to be calculated
+        'OUTPUT': output_path
+    }
+    # Perform expression calculation
+    result = processing.run("native:calculateexpression", parameters)
+    
+    # Load the output layer
+    output_layer = QgsVectorLayer(result['OUTPUT'], 'Calculated_Expression_Output', 'ogr')
+    QgsProject.instance().addMapLayer(output_layer)
+
+# Example usage of the function
+input_layer_path = "D:/Data/InputLayer.shp"
+output_layer_path = "D:/Data/Calculated_Expression_Output.shp"
+calculate_expression(input_layer_path, output_layer_path)
+
+
+Tool Id:
+thematic_map_creation
+
+Tool Name:
+Thematic Map Creation
+
+Brief Description:
+This creates a map that shows one or more specific data themes or attributes. Examples of themes or attributes include population density, climatic patterns, economic activities, vegetation etc.
+An example of a thematic map is a choropleth map which uses different colors or shades to represent data ranges.
+
+Parameters:
+
+
+Code Example:
+#Importing necessary modules
+from qgis.core import QgsVectorLayer, QgsProject, QgsVectorLayerJoinInfo, QgsGraduatedSymbolRenderer, QgsMapSettings, QgsSymbol
+from qgis.PyQt.QtCore import QVariant, QSize
+from qgis.PyQt.QtGui import QImage, QPainter, QColor
+    
+def Thematic_Map_Creation():
+    # Load the shapefile
+    path_to_layer = 'D:\\Data\\Data.shp'
+    layer = QgsVectorLayer(path_to_layer, "Population_Distribution", "ogr")
+    QgsProject.instance().addMapLayer(layer)
+    
+    # Create a Graduated Symbol Renderer using 'Population' field
+    symbol = QgsSymbol.defaultSymbol(layer.geometryType())
+    renderer = QgsGraduatedSymbolRenderer('', [])
+    renderer.setClassAttribute('Population')
+    renderer.setMode(QgsGraduatedSymbolRenderer.Quantile) #Use the quantile classificatiom method by default unless specified
+    renderer.updateClasses(layer, 5)
+    
+    # Set the color ramp (green gradient)
+    from qgis.core import QgsGradientColorRamp
+    color1 = QColor(144, 238, 144) # light green
+    color2 = QColor(0, 128, 0)     # dark green
+    color_ramp = QgsGradientColorRamp(color1, color2)
+    renderer.updateColorRamp(color_ramp)
+
+    layer.setRenderer(renderer)
+    layer.triggerRepaint()
+    QgsProject.instance().addMapLayer(layer)
+
+# Execute the function
+Thematic_Map_Creation()
+
+
+Tool Id:
+qgis:selectbyexpression
+
+Tool Name:
+Select by expression
+
+Brief Description:
+This algorithm creates a new vector layer that only contains matching features from an input layer. The criteria for adding features to the resulting layer is based on a QGIS expression.
+
+Parameters:
+INPUT: Input vector layer
+EXPRESSION: Expression to filter the vector layer
+OUTPUT: Specify the output (buffer) layer. One of: Create Temporary Layer (TEMPORARY_OUTPUT); Save to File…;
+        Save to Geopackage…; Save to Database Table…; Append to Layer…
+
+Code Example:
+import processing
+    from qgis.core import QgsProject,QgsVectorLayer
+    def extract_by_expression(input_layer_path):
+        # Define the parameters
+        input_layer = QgsVectorLayer(input_layer_path, "Input Layer", "ogr")
+    
+        # Define the parameters Example below:
+        parameters = {
+            'INPUT': input_layer_path,
+            'EXPRESSION':' "STATEFP"  =\'42\' AND  "Obesity" <30',
+            'OUTPUT': output_layer_path
+        }
+        # Perform the extract by attribute operation
+        result = processing.run("qgis:selectbyexpression", parameters)
+        # Load the selected features as a new layer
+        output_layer = QgsVectorLayer(output_path, 'PA_Obesity<30', 'ogr')
+        QgsProject.instance().addMapLayer(output_layer)
+    input_layer_path = "D:/Data/PrevalenceData.shp"  # path to the input shapefile
+    output_layer_path ="D:/workspace_directory/output_layer.shp"
+    select_by_attribute(input_layer_path)
+
+
+requirements: 
+1. Think step by step
+2. If you need to perform more than one operation, you must perform the operations step by step
+3. Use the selected tools provided
+4. DO NOT include the QGIS initialization code in the script
+5. When using QGIS processing algorithm, use `QgsVectorLayer` to load shapefiles. For example `output_layer = QgsVectorLayer(result['OUTPUT'], 'Layer Name', 'ogr')`
+6. Put your reply into a Python code block, Explanation or conversation can be Python comments at the begining of the code block(enclosed by ```python and ```).
+7. The python code is only in a function named in with the operation name e.g 'perform_idw_interpolation()'. The last line is to execute this function.
+8. Only do the reprojection as needed when 1) e.g., calculating distances/buffers that needs projected CRS, and the layers have different projections
+9. If you need to use `QVariant` should be imported from `PyQt5.Qtcore` and NOT `qgis.core`
+10. If you need to use `QColor` should be imported from `PyQt5.QtGui`
+11. Put your reply into a Python code block (enclosed by python and ), NO explanation or conversation outside the code block.
+12. You are not limited to QGIS python functions/tools, you can also use other python functions asuch as geopandas, numpy, scipy etc.
+13. If you need to use `QgsVectorLayer`, it should always be imported from qgis.core.
+14. DO NOT add validity check and DO NOT raise any exception.
+15. DO NOT raise exceptions messages.
+16. When performing any operation that generates an output vector or raster layer , include the code to load the resulting output layer into QGIS
+17. When performing any operation such as counting of features, generating plots (scatter plot, bar plot), etc., which do not require creation of new layers, do not include load the resulting output layer into QGIS rather print the result
+18. If you need to use any field from the input shapefile layer, first access the fields (example code: `fields = input_layer.fields()`), then select the appropriate field carefully from the list of fields in the layer.
+19. If you need to load a raster layer, use this format `output_layer = QgsRasterLayer(output_path, 'Slope Output')`
+20. When using Raster calculator 'native:rastercalculator' is wrong rather the correct ID for the Raster Calculator algorithm is 'native:rastercalc'.
+21. When creating plots such as barplot, scatterplot etc., usually their result is a html or image file. Always save the file into the specified output directory and print the output layer. Do not Load the output HTML/ or image in QGIS as a standalone resource. 
+22. When creating charts or plots such as barchart, barplot, scatterplot etc., you should make use of `seaborn` by default except another method is specified
+23. When creating a scatterplot, 'native:scatterplot' and 'qgis:scatterplot' are not supported. The correct tool is qgis:vectorlayerscatterplot.
+24. When using tool that is used to generate counts e.g 'Vector information(gdal:ogrinfo), Count points in polygon(native:countpointsinpolygon), etc., don't just print the file path (e.g the html path) but also ensure you print the count(e.g Number of conties)
+25. NOTE: `vector_layer.featureCount()` can be use to generate the count of features
+26. If you are printing any file path (e.g html, png, etc.), Do not include any additional information. just print the file path
+27. When loading a CSV layer as a layer, use this: `'f'file///{csv_path}?delimeter=,''`, assuming the csv is comma-separated, but use the csv_path directly for the Input parameter in join operations.
+28. If you are to use processing algorithm, you do not need to include the code to load a data
+29. For tasks that contains interrogative words such as ('how', 'what', 'why', 'when', 'where', 'which'), ensure that no layers are loaded into the QGIS, instead the result should be printed
+30. If you are creating plots such as barplot, scatterplot etc., usually their result is a html file. Always save the html file into the specified output directory and print the output layer. Do not Load the output HTML in QGIS as a standalone resource.
+31. If you are using the processing algorithm, make the output parameter to be the user's specified output directory . And use `QgsVectorLayer` to load the feature as a new layer: For example `Buffer_layer = QgsVectorLayer(result['OUTPUT'], 'Buffered output', 'ogr')` for the case of a shapefile.
+32. Similarly, if you used geopandas to generate a new layer, use `QgsVectorLayer` to load the feature as a new layer: For example `Buffer_layer = QgsVectorLayer(result['OUTPUT'], 'Buffered output', 'ogr')` for the case of a shapefile.
+33. Whenever a new layer is being saved, ensure the code first checks if a file with the same name already exists in the output directory, and if it doesn't, go ahead and save with the original name, but if same name exist, append a number to the filename to create a unique name, thereby avoiding any errors related to overwriting or saving the layer.
+34. When naming any output layer, choose a name that is concise, descriptive, easy to read, and free of spaces.
+35. Ensure that temporary layer is not used as the output parameter
+36. When using `gdal:proximity`, ensure all shapefiles are rasterized before using them
+37. When performing multi-step tasks that involve creating intermediary layers, ensure there is a waiting period before proceeding to the next step. This allows enough time for the intermediary layers to be fully created, preventing errors such as 'data not found.'
+38. When adding a new field to the a shapefile, it should be noted that the maximum length for field name is 10, so avoid mismatch in the fieldname in the data and in the calculation.When creating a thematic map after joining attributes to a shapefile, ensure that the field name length for the attribute use for thematic map do not exceed 10, if it exceed 10, truncate the field name (E.g, 'White_Population' can be truncated to 'White_Popu'). Adhering to the 10 field name length limit ensures consistency and prevents errors during thematic map creation.
+Set: /Users/rohanbali/gis_work/run15/workspace as the output directory for any operation
+
+---------- AI IS GENERATING THE OPERATION CODE ----------
+
+GENERATED CODE:```python
+# Python code to perform the GIS tasks described in the mission.
+# The script uses QGIS processing algorithms where appropriate and
+# geopandas for attribute calculations.
+# All outputs are saved in the user‑specified workspace directory.
+
+import os
+import pathlib
+import processing
+import geopandas as gpd
+import numpy as np
+from qgis.core import QgsVectorLayer, QgsProject, QgsGraduatedSymbolRenderer, QgsSymbol, QgsGradientColorRamp
+from qgis.PyQt.QtGui import QColor
+
+# Helper to create a unique output file path
+def get_unique_path(output_dir, base_name, ext):
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+def perform_population_density_tasks():
+    # Input and output directories
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # ------------------------------
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    # ------------------------------
+    gdf = gpd.read_file(input_path)
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # EPSG:5070 units are metres
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    # Save the enriched GeoDataFrame to a new GeoPackage
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    # Load the enriched layer into QGIS
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # ------------------------------
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    # ------------------------------
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+    # Define manual classes: <10, 10-20, 20-50, 50-100, >100
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100")  # upper bound high value
+    ]
+    sym = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        cls = sym.clone()
+        cls.setColor(QColor(255, 255, 255))  # default colour, will be overridden by ramp
+        renderer.updateClass(cls, lower, upper, label)
+    # Create a color ramp (blue to red)
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # ------------------------------
+    # 3. Select features where POP_DENSITY > 100
+    # ------------------------------
+    sel_params = {
+        'INPUT': enriched_path,
+        'EXPRESSION': "\"POP_DENSITY\" > 100",
+        'OUTPUT': "TEMPORARY_OUTPUT"
+    }
+    result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(result['OUTPUT'], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+
+    # Count selected features
+    selected_count = selected_layer.featureCount()
+    print("Number of counties with population density > 100 people/km²:", selected_count)
+
+    # ------------------------------
+    # 4. Calculate median of POP_DENSITY
+    # ------------------------------
+    stats_params = {
+        'INPUT': enriched_path,
+        'COLUMN': "POP_DENSITY",
+        'OUTPUT': "TEMPORARY_OUTPUT"
+    }
+    stats_result = processing.run("native:basicstatisticsforfields", stats_params)
+    median_value = stats_result['OUTPUT']['median']
+    print("Median population density across all counties (people/km²):", median_value)
+
+# Execute the function
+perform_population_density_tasks()
+```
+
+
+ -------------------------- GENERATED CODE --------------------------------------------
+
+```python
+# Python code to perform the GIS tasks described in the mission.
+# The script uses QGIS processing algorithms where appropriate and
+# geopandas for attribute calculations.
+# All outputs are saved in the user‑specified workspace directory.
+
+import os
+import pathlib
+import processing
+import geopandas as gpd
+import numpy as np
+from qgis.core import QgsVectorLayer, QgsProject, QgsGraduatedSymbolRenderer, QgsSymbol, QgsGradientColorRamp
+from qgis.PyQt.QtGui import QColor
+
+# Helper to create a unique output file path
+def get_unique_path(output_dir, base_name, ext):
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+def perform_population_density_tasks():
+    # Input and output directories
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # ------------------------------
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    # ------------------------------
+    gdf = gpd.read_file(input_path)
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # EPSG:5070 units are metres
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    # Save the enriched GeoDataFrame to a new GeoPackage
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    # Load the enriched layer into QGIS
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # ------------------------------
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    # ------------------------------
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+    # Define manual classes: <10, 10-20, 20-50, 50-100, >100
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100")  # upper bound high value
+    ]
+    sym = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        cls = sym.clone()
+        cls.setColor(QColor(255, 255, 255))  # default colour, will be overridden by ramp
+        renderer.updateClass(cls, lower, upper, label)
+    # Create a color ramp (blue to red)
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # ------------------------------
+    # 3. Select features where POP_DENSITY > 100
+    # ------------------------------
+    sel_params = {
+        'INPUT': enriched_path,
+        'EXPRESSION': "\"POP_DENSITY\" > 100",
+        'OUTPUT': "TEMPORARY_OUTPUT"
+    }
+    result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(result['OUTPUT'], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+
+    # Count selected features
+    selected_count = selected_layer.featureCount()
+    print("Number of counties with population density > 100 people/km²:", selected_count)
+
+    # ------------------------------
+    # 4. Calculate median of POP_DENSITY
+    # ------------------------------
+    stats_params = {
+        'INPUT': enriched_path,
+        'COLUMN': "POP_DENSITY",
+        'OUTPUT': "TEMPORARY_OUTPUT"
+    }
+    stats_result = processing.run("native:basicstatisticsforfields", stats_params)
+    median_value = stats_result['OUTPUT']['median']
+    print("Median population density across all counties (people/km²):", median_value)
+
+# Execute the function
+perform_population_density_tasks()
+```
+
+
+-------------- Running code (trial # 1/5) --------------
+
+
+code in get_debug_prompt: # Python code to perform the GIS tasks described in the mission.
+# The script uses QGIS processing algorithms where appropriate and
+# geopandas for attribute calculations.
+# All outputs are saved in the user‑specified workspace directory.
+
+import os
+import pathlib
+import processing
+import geopandas as gpd
+import numpy as np
+from qgis.core import QgsVectorLayer, QgsProject, QgsGraduatedSymbolRenderer, QgsSymbol, QgsGradientColorRamp
+from qgis.PyQt.QtGui import QColor
+
+# Helper to create a unique output file path
+def get_unique_path(output_dir, base_name, ext):
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+def perform_population_density_tasks():
+    # Input and output directories
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # ------------------------------
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    # ------------------------------
+    gdf = gpd.read_file(input_path)
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # EPSG:5070 units are metres
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    # Save the enriched GeoDataFrame to a new GeoPackage
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    # Load the enriched layer into QGIS
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # ------------------------------
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    # ------------------------------
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+    # Define manual classes: <10, 10-20, 20-50, 50-100, >100
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100")  # upper bound high value
+    ]
+    sym = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        cls = sym.clone()
+        cls.setColor(QColor(255, 255, 255))  # default colour, will be overridden by ramp
+        renderer.updateClass(cls, lower, upper, label)
+    # Create a color ramp (blue to red)
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # ------------------------------
+    # 3. Select features where POP_DENSITY > 100
+    # ------------------------------
+    sel_params = {
+        'INPUT': enriched_path,
+        'EXPRESSION': "\"POP_DENSITY\" > 100",
+        'OUTPUT': "TEMPORARY_OUTPUT"
+    }
+    result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(result['OUTPUT'], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+
+    # Count selected features
+    selected_count = selected_layer.featureCount()
+    print("Number of counties with population density > 100 people/km²:", selected_count)
+
+    # ------------------------------
+    # 4. Calculate median of POP_DENSITY
+    # ------------------------------
+    stats_params = {
+        'INPUT': enriched_path,
+        'COLUMN': "POP_DENSITY",
+        'OUTPUT': "TEMPORARY_OUTPUT"
+    }
+    stats_result = processing.run("native:basicstatisticsforfields", stats_params)
+    median_value = stats_result['OUTPUT']['median']
+    print("Median population density across all counties (people/km²):", median_value)
+
+# Execute the function
+perform_population_density_tasks()
+Error_info_str: 
+Traceback (most recent call last):
+  File "/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/SpatialAnalysisAgent/SpatialAnalysisAgent_MainThread.py", line 54, in exec_in_main_thread
+    _exec_code(code, namespace)
+  File "/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/SpatialAnalysisAgent/SpatialAnalysisAgent_MainThread.py", line 15, in _exec_code
+    exec(code, namespace)  # nosec B102
+  File "Complete program", line 99, in <module>
+    perform_population_density_tasks()
+  File "Complete program", line 63, in perform_population_density_tasks
+    renderer.updateClass(cls, lower, upper, label)
+AttributeError: 'QgsGraduatedSymbolRenderer' object has no attribute 'updateClass'. Did you mean: 'updateClasses'?
+
+========================================================
+AI IS DEBUGGING THE CODE...
+========================================================
+DEBUGGING RESPONSE:```python
+import os
+import pathlib
+import processing
+import geopandas as gpd
+import numpy as np
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+)
+from qgis.PyQt.QtGui import QColor
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    # Ensure CRS is projected for accurate area calculation
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        sym.setColor(QColor(255, 255, 255))  # placeholder colour
+        renderer.addClass(sym, lower, upper, label)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+    renderer.updateClasses()
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print("Number of counties with population density > 100 people/km²:", selected_layer.featureCount())
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print("Median population density across all counties (people/km²):", median_value)
+
+# Execute the function
+perform_population_density_tasks()
+```
+========================================================
+
+DEBUGGED CODE:
+```python
+import os
+import pathlib
+import processing
+import geopandas as gpd
+import numpy as np
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+)
+from qgis.PyQt.QtGui import QColor
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    # Ensure CRS is projected for accurate area calculation
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        sym.setColor(QColor(255, 255, 255))  # placeholder colour
+        renderer.addClass(sym, lower, upper, label)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+    renderer.updateClasses()
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print("Number of counties with population density > 100 people/km²:", selected_layer.featureCount())
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print("Median population density across all counties (people/km²):", median_value)
+
+# Execute the function
+perform_population_density_tasks()
+```
+CODE_READY_URLENCODED:import%20os%0Aimport%20pathlib%0Aimport%20processing%0Aimport%20geopandas%20as%20gpd%0Aimport%20numpy%20as%20np%0Afrom%20qgis.core%20import%20%28%0A%20%20%20%20QgsVectorLayer%2C%0A%20%20%20%20QgsProject%2C%0A%20%20%20%20QgsGraduatedSymbolRenderer%2C%0A%20%20%20%20QgsSymbol%2C%0A%20%20%20%20QgsGradientColorRamp%2C%0A%29%0Afrom%20qgis.PyQt.QtGui%20import%20QColor%0A%0Adef%20get_unique_path%28output_dir%3A%20str%2C%20base_name%3A%20str%2C%20ext%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Return%20a%20unique%20file%20path%20in%20the%20output%20directory.%22%22%22%0A%20%20%20%20os.makedirs%28output_dir%2C%20exist_ok%3DTrue%29%0A%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D%7Bext%7D%22%0A%20%20%20%20counter%20%3D%201%0A%20%20%20%20while%20path.exists%28%29%3A%0A%20%20%20%20%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D_%7Bcounter%7D%7Bext%7D%22%0A%20%20%20%20%20%20%20%20counter%20%2B%3D%201%0A%20%20%20%20return%20str%28path%29%0A%0Adef%20perform_population_density_tasks%28%29%20-%3E%20None%3A%0A%20%20%20%20input_path%20%3D%20%22/Users/rohanbali/gis_work/run15/counties.gpkg%22%0A%20%20%20%20output_dir%20%3D%20%22/Users/rohanbali/gis_work/run15/workspace%22%0A%0A%20%20%20%20%23%20Load%20the%20counties%20layer%0A%20%20%20%20counties_layer%20%3D%20QgsVectorLayer%28input_path%2C%20%22Counties%22%2C%20%22ogr%22%29%0A%0A%20%20%20%20%23%201.%20Calculate%20AREA_KM2%20and%20POP_DENSITY%20using%20geopandas%0A%20%20%20%20gdf%20%3D%20gpd.read_file%28input_path%29%0A%20%20%20%20%23%20Ensure%20CRS%20is%20projected%20for%20accurate%20area%20calculation%0A%20%20%20%20if%20not%20gdf.crs.is_projected%3A%0A%20%20%20%20%20%20%20%20gdf%20%3D%20gdf.to_crs%28epsg%3D5070%29%20%20%23%20NAD83%20/%20Conus%20Albers%0A%20%20%20%20gdf%5B%22AREA_KM2%22%5D%20%3D%20gdf.geometry.area%20/%201_000_000%20%20%23%20metres%C2%B2%20to%20km%C2%B2%0A%20%20%20%20gdf%5B%22POP_DENSITY%22%5D%20%3D%20gdf%5B%22POP2023%22%5D%20/%20gdf%5B%22AREA_KM2%22%5D%0A%0A%20%20%20%20enriched_path%20%3D%20get_unique_path%28output_dir%2C%20%22counties_with_density%22%2C%20%22.gpkg%22%29%0A%20%20%20%20gdf.to_file%28enriched_path%2C%20driver%3D%22GPKG%22%29%0A%0A%20%20%20%20enriched_layer%20%3D%20QgsVectorLayer%28enriched_path%2C%20%22Counties_Density%22%2C%20%22ogr%22%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28enriched_layer%29%0A%0A%20%20%20%20%23%202.%20Thematic%20map%20creation%20%28graduated%20symbology%20on%20POP_DENSITY%29%0A%20%20%20%20renderer%20%3D%20QgsGraduatedSymbolRenderer%28%22%22%2C%20%5B%5D%29%0A%20%20%20%20renderer.setClassAttribute%28%22POP_DENSITY%22%29%0A%0A%20%20%20%20classes%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%280%2C%2010%2C%20%22Less%20than%2010%22%29%2C%0A%20%20%20%20%20%20%20%20%2810%2C%2020%2C%20%2210%E2%80%9320%22%29%2C%0A%20%20%20%20%20%20%20%20%2820%2C%2050%2C%20%2220%E2%80%9350%22%29%2C%0A%20%20%20%20%20%20%20%20%2850%2C%20100%2C%20%2250%E2%80%93100%22%29%2C%0A%20%20%20%20%20%20%20%20%28100%2C%201e9%2C%20%22More%20than%20100%22%29%2C%0A%20%20%20%20%5D%0A%0A%20%20%20%20base_symbol%20%3D%20QgsSymbol.defaultSymbol%28enriched_layer.geometryType%28%29%29%0A%20%20%20%20for%20lower%2C%20upper%2C%20label%20in%20classes%3A%0A%20%20%20%20%20%20%20%20sym%20%3D%20base_symbol.clone%28%29%0A%20%20%20%20%20%20%20%20sym.setColor%28QColor%28255%2C%20255%2C%20255%29%29%20%20%23%20placeholder%20colour%0A%20%20%20%20%20%20%20%20renderer.addClass%28sym%2C%20lower%2C%20upper%2C%20label%29%0A%0A%20%20%20%20%23%20Color%20ramp%20from%20blue%20to%20red%0A%20%20%20%20color_ramp%20%3D%20QgsGradientColorRamp%28QColor%280%2C%200%2C%20255%29%2C%20QColor%28255%2C%200%2C%200%29%29%0A%20%20%20%20renderer.setColorRamp%28color_ramp%29%0A%20%20%20%20renderer.updateClasses%28%29%0A%0A%20%20%20%20enriched_layer.setRenderer%28renderer%29%0A%20%20%20%20enriched_layer.triggerRepaint%28%29%0A%0A%20%20%20%20%23%203.%20Select%20features%20where%20POP_DENSITY%20%3E%20100%0A%20%20%20%20sel_params%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22INPUT%22%3A%20enriched_path%2C%0A%20%20%20%20%20%20%20%20%22EXPRESSION%22%3A%20%22%5C%22POP_DENSITY%5C%22%20%3E%20100%22%2C%0A%20%20%20%20%20%20%20%20%22OUTPUT%22%3A%20%22TEMPORARY_OUTPUT%22%2C%0A%20%20%20%20%7D%0A%20%20%20%20sel_result%20%3D%20processing.run%28%22qgis%3Aselectbyexpression%22%2C%20sel_params%29%0A%20%20%20%20selected_layer%20%3D%20QgsVectorLayer%28sel_result%5B%22OUTPUT%22%5D%2C%20%22Density_%3E100%22%2C%20%22ogr%22%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28selected_layer%29%0A%20%20%20%20print%28%22Number%20of%20counties%20with%20population%20density%20%3E%20100%20people/km%C2%B2%3A%22%2C%20selected_layer.featureCount%28%29%29%0A%0A%20%20%20%20%23%204.%20Calculate%20median%20of%20POP_DENSITY%0A%20%20%20%20median_value%20%3D%20gdf%5B%22POP_DENSITY%22%5D.median%28%29%0A%20%20%20%20print%28%22Median%20population%20density%20across%20all%20counties%20%28people/km%C2%B2%29%3A%22%2C%20median_value%29%0A%0A%23%20Execute%20the%20function%0Aperform_population_density_tasks%28%29
+
+
+-------------- Running code (trial # 2/5) --------------
+
+
+code in get_debug_prompt: import os
+import pathlib
+import processing
+import geopandas as gpd
+import numpy as np
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+)
+from qgis.PyQt.QtGui import QColor
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    # Ensure CRS is projected for accurate area calculation
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        sym.setColor(QColor(255, 255, 255))  # placeholder colour
+        renderer.addClass(sym, lower, upper, label)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+    renderer.updateClasses()
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print("Number of counties with population density > 100 people/km²:", selected_layer.featureCount())
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print("Median population density across all counties (people/km²):", median_value)
+
+# Execute the function
+perform_population_density_tasks()
+Error_info_str: 
+Traceback (most recent call last):
+  File "/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/SpatialAnalysisAgent/SpatialAnalysisAgent_MainThread.py", line 54, in exec_in_main_thread
+    _exec_code(code, namespace)
+  File "/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/SpatialAnalysisAgent/SpatialAnalysisAgent_MainThread.py", line 15, in _exec_code
+    exec(code, namespace)  # nosec B102
+  File "Complete program", line 88, in <module>
+    perform_population_density_tasks()
+  File "Complete program", line 62, in perform_population_density_tasks
+    renderer.addClass(sym, lower, upper, label)
+TypeError: QgsGraduatedSymbolRenderer.addClass(): too many arguments
+
+========================================================
+AI IS DEBUGGING THE CODE...
+========================================================
+DEBUGGING RESPONSE:```python
+import os
+import pathlib
+import processing
+import geopandas as gpd
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+    QgsRendererRange,
+)
+from qgis.PyQt.QtGui import QColor
+
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        rng = QgsRendererRange(lower, upper, sym, label)
+        renderer.addClass(rng)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print(
+        "Number of counties with population density > 100 people/km²:",
+        selected_layer.featureCount(),
+    )
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print(
+        "Median population density across all counties (people/km²):",
+        median_value,
+    )
+
+
+# Execute the function
+perform_population_density_tasks()
+```
+
+========================================================
+
+DEBUGGED CODE:
+```python
+import os
+import pathlib
+import processing
+import geopandas as gpd
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+    QgsRendererRange,
+)
+from qgis.PyQt.QtGui import QColor
+
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        rng = QgsRendererRange(lower, upper, sym, label)
+        renderer.addClass(rng)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print(
+        "Number of counties with population density > 100 people/km²:",
+        selected_layer.featureCount(),
+    )
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print(
+        "Median population density across all counties (people/km²):",
+        median_value,
+    )
+
+
+# Execute the function
+perform_population_density_tasks()
+```
+CODE_READY_URLENCODED:import%20os%0Aimport%20pathlib%0Aimport%20processing%0Aimport%20geopandas%20as%20gpd%0Afrom%20qgis.core%20import%20%28%0A%20%20%20%20QgsVectorLayer%2C%0A%20%20%20%20QgsProject%2C%0A%20%20%20%20QgsGraduatedSymbolRenderer%2C%0A%20%20%20%20QgsSymbol%2C%0A%20%20%20%20QgsGradientColorRamp%2C%0A%20%20%20%20QgsRendererRange%2C%0A%29%0Afrom%20qgis.PyQt.QtGui%20import%20QColor%0A%0A%0Adef%20get_unique_path%28output_dir%3A%20str%2C%20base_name%3A%20str%2C%20ext%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Return%20a%20unique%20file%20path%20in%20the%20output%20directory.%22%22%22%0A%20%20%20%20os.makedirs%28output_dir%2C%20exist_ok%3DTrue%29%0A%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D%7Bext%7D%22%0A%20%20%20%20counter%20%3D%201%0A%20%20%20%20while%20path.exists%28%29%3A%0A%20%20%20%20%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D_%7Bcounter%7D%7Bext%7D%22%0A%20%20%20%20%20%20%20%20counter%20%2B%3D%201%0A%20%20%20%20return%20str%28path%29%0A%0A%0Adef%20perform_population_density_tasks%28%29%20-%3E%20None%3A%0A%20%20%20%20input_path%20%3D%20%22/Users/rohanbali/gis_work/run15/counties.gpkg%22%0A%20%20%20%20output_dir%20%3D%20%22/Users/rohanbali/gis_work/run15/workspace%22%0A%0A%20%20%20%20%23%20Load%20the%20counties%20layer%0A%20%20%20%20counties_layer%20%3D%20QgsVectorLayer%28input_path%2C%20%22Counties%22%2C%20%22ogr%22%29%0A%0A%20%20%20%20%23%201.%20Calculate%20AREA_KM2%20and%20POP_DENSITY%20using%20geopandas%0A%20%20%20%20gdf%20%3D%20gpd.read_file%28input_path%29%0A%20%20%20%20if%20not%20gdf.crs.is_projected%3A%0A%20%20%20%20%20%20%20%20gdf%20%3D%20gdf.to_crs%28epsg%3D5070%29%20%20%23%20NAD83%20/%20Conus%20Albers%0A%20%20%20%20gdf%5B%22AREA_KM2%22%5D%20%3D%20gdf.geometry.area%20/%201_000_000%20%20%23%20metres%C2%B2%20to%20km%C2%B2%0A%20%20%20%20gdf%5B%22POP_DENSITY%22%5D%20%3D%20gdf%5B%22POP2023%22%5D%20/%20gdf%5B%22AREA_KM2%22%5D%0A%0A%20%20%20%20enriched_path%20%3D%20get_unique_path%28output_dir%2C%20%22counties_with_density%22%2C%20%22.gpkg%22%29%0A%20%20%20%20gdf.to_file%28enriched_path%2C%20driver%3D%22GPKG%22%29%0A%0A%20%20%20%20enriched_layer%20%3D%20QgsVectorLayer%28enriched_path%2C%20%22Counties_Density%22%2C%20%22ogr%22%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28enriched_layer%29%0A%0A%20%20%20%20%23%202.%20Thematic%20map%20creation%20%28graduated%20symbology%20on%20POP_DENSITY%29%0A%20%20%20%20renderer%20%3D%20QgsGraduatedSymbolRenderer%28%22%22%2C%20%5B%5D%29%0A%20%20%20%20renderer.setClassAttribute%28%22POP_DENSITY%22%29%0A%0A%20%20%20%20classes%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%280%2C%2010%2C%20%22Less%20than%2010%22%29%2C%0A%20%20%20%20%20%20%20%20%2810%2C%2020%2C%20%2210%E2%80%9320%22%29%2C%0A%20%20%20%20%20%20%20%20%2820%2C%2050%2C%20%2220%E2%80%9350%22%29%2C%0A%20%20%20%20%20%20%20%20%2850%2C%20100%2C%20%2250%E2%80%93100%22%29%2C%0A%20%20%20%20%20%20%20%20%28100%2C%201e9%2C%20%22More%20than%20100%22%29%2C%0A%20%20%20%20%5D%0A%0A%20%20%20%20base_symbol%20%3D%20QgsSymbol.defaultSymbol%28enriched_layer.geometryType%28%29%29%0A%20%20%20%20for%20lower%2C%20upper%2C%20label%20in%20classes%3A%0A%20%20%20%20%20%20%20%20sym%20%3D%20base_symbol.clone%28%29%0A%20%20%20%20%20%20%20%20rng%20%3D%20QgsRendererRange%28lower%2C%20upper%2C%20sym%2C%20label%29%0A%20%20%20%20%20%20%20%20renderer.addClass%28rng%29%0A%0A%20%20%20%20%23%20Color%20ramp%20from%20blue%20to%20red%0A%20%20%20%20color_ramp%20%3D%20QgsGradientColorRamp%28QColor%280%2C%200%2C%20255%29%2C%20QColor%28255%2C%200%2C%200%29%29%0A%20%20%20%20renderer.setColorRamp%28color_ramp%29%0A%0A%20%20%20%20enriched_layer.setRenderer%28renderer%29%0A%20%20%20%20enriched_layer.triggerRepaint%28%29%0A%0A%20%20%20%20%23%203.%20Select%20features%20where%20POP_DENSITY%20%3E%20100%0A%20%20%20%20sel_params%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22INPUT%22%3A%20enriched_path%2C%0A%20%20%20%20%20%20%20%20%22EXPRESSION%22%3A%20%22%5C%22POP_DENSITY%5C%22%20%3E%20100%22%2C%0A%20%20%20%20%20%20%20%20%22OUTPUT%22%3A%20%22TEMPORARY_OUTPUT%22%2C%0A%20%20%20%20%7D%0A%20%20%20%20sel_result%20%3D%20processing.run%28%22qgis%3Aselectbyexpression%22%2C%20sel_params%29%0A%20%20%20%20selected_layer%20%3D%20QgsVectorLayer%28sel_result%5B%22OUTPUT%22%5D%2C%20%22Density_%3E100%22%2C%20%22ogr%22%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28selected_layer%29%0A%20%20%20%20print%28%0A%20%20%20%20%20%20%20%20%22Number%20of%20counties%20with%20population%20density%20%3E%20100%20people/km%C2%B2%3A%22%2C%0A%20%20%20%20%20%20%20%20selected_layer.featureCount%28%29%2C%0A%20%20%20%20%29%0A%0A%20%20%20%20%23%204.%20Calculate%20median%20of%20POP_DENSITY%0A%20%20%20%20median_value%20%3D%20gdf%5B%22POP_DENSITY%22%5D.median%28%29%0A%20%20%20%20print%28%0A%20%20%20%20%20%20%20%20%22Median%20population%20density%20across%20all%20counties%20%28people/km%C2%B2%29%3A%22%2C%0A%20%20%20%20%20%20%20%20median_value%2C%0A%20%20%20%20%29%0A%0A%0A%23%20Execute%20the%20function%0Aperform_population_density_tasks%28%29
+
+
+-------------- Running code (trial # 3/5) --------------
+
+
+code in get_debug_prompt: import os
+import pathlib
+import processing
+import geopandas as gpd
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+    QgsRendererRange,
+)
+from qgis.PyQt.QtGui import QColor
+
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        rng = QgsRendererRange(lower, upper, sym, label)
+        renderer.addClass(rng)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print(
+        "Number of counties with population density > 100 people/km²:",
+        selected_layer.featureCount(),
+    )
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print(
+        "Median population density across all counties (people/km²):",
+        median_value,
+    )
+
+
+# Execute the function
+perform_population_density_tasks()
+Error_info_str: 
+Traceback (most recent call last):
+  File "/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/SpatialAnalysisAgent/SpatialAnalysisAgent_MainThread.py", line 54, in exec_in_main_thread
+    _exec_code(code, namespace)
+  File "/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/SpatialAnalysisAgent/SpatialAnalysisAgent_MainThread.py", line 15, in _exec_code
+    exec(code, namespace)  # nosec B102
+  File "Complete program", line 95, in <module>
+    perform_population_density_tasks()
+  File "Complete program", line 63, in perform_population_density_tasks
+    renderer.addClass(rng)
+TypeError: QgsGraduatedSymbolRenderer.addClass(): argument 1 has unexpected type 'QgsRendererRange'
+
+========================================================
+AI IS DEBUGGING THE CODE...
+========================================================
+DEBUGGING RESPONSE:```python
+import os
+import pathlib
+import processing
+import geopandas as gpd
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+    QgsRendererRange,
+)
+from qgis.PyQt.QtGui import QColor
+
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    ranges = []
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        rng = QgsRendererRange(lower, upper, sym, label)
+        ranges.append(rng)
+
+    renderer.setClasses(ranges)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print(
+        "Number of counties with population density > 100 people/km²:",
+        selected_layer.featureCount(),
+    )
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print(
+        "Median population density across all counties (people/km²):",
+        median_value,
+    )
+
+
+# Execute the function
+perform_population_density_tasks()
+```
+
+========================================================
+
+DEBUGGED CODE:
+```python
+import os
+import pathlib
+import processing
+import geopandas as gpd
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+    QgsRendererRange,
+)
+from qgis.PyQt.QtGui import QColor
+
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    ranges = []
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        rng = QgsRendererRange(lower, upper, sym, label)
+        ranges.append(rng)
+
+    renderer.setClasses(ranges)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print(
+        "Number of counties with population density > 100 people/km²:",
+        selected_layer.featureCount(),
+    )
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print(
+        "Median population density across all counties (people/km²):",
+        median_value,
+    )
+
+
+# Execute the function
+perform_population_density_tasks()
+```
+CODE_READY_URLENCODED:import%20os%0Aimport%20pathlib%0Aimport%20processing%0Aimport%20geopandas%20as%20gpd%0Afrom%20qgis.core%20import%20%28%0A%20%20%20%20QgsVectorLayer%2C%0A%20%20%20%20QgsProject%2C%0A%20%20%20%20QgsGraduatedSymbolRenderer%2C%0A%20%20%20%20QgsSymbol%2C%0A%20%20%20%20QgsGradientColorRamp%2C%0A%20%20%20%20QgsRendererRange%2C%0A%29%0Afrom%20qgis.PyQt.QtGui%20import%20QColor%0A%0A%0Adef%20get_unique_path%28output_dir%3A%20str%2C%20base_name%3A%20str%2C%20ext%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Return%20a%20unique%20file%20path%20in%20the%20output%20directory.%22%22%22%0A%20%20%20%20os.makedirs%28output_dir%2C%20exist_ok%3DTrue%29%0A%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D%7Bext%7D%22%0A%20%20%20%20counter%20%3D%201%0A%20%20%20%20while%20path.exists%28%29%3A%0A%20%20%20%20%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D_%7Bcounter%7D%7Bext%7D%22%0A%20%20%20%20%20%20%20%20counter%20%2B%3D%201%0A%20%20%20%20return%20str%28path%29%0A%0A%0Adef%20perform_population_density_tasks%28%29%20-%3E%20None%3A%0A%20%20%20%20input_path%20%3D%20%22/Users/rohanbali/gis_work/run15/counties.gpkg%22%0A%20%20%20%20output_dir%20%3D%20%22/Users/rohanbali/gis_work/run15/workspace%22%0A%0A%20%20%20%20%23%20Load%20the%20counties%20layer%0A%20%20%20%20counties_layer%20%3D%20QgsVectorLayer%28input_path%2C%20%22Counties%22%2C%20%22ogr%22%29%0A%0A%20%20%20%20%23%201.%20Calculate%20AREA_KM2%20and%20POP_DENSITY%20using%20geopandas%0A%20%20%20%20gdf%20%3D%20gpd.read_file%28input_path%29%0A%20%20%20%20if%20not%20gdf.crs.is_projected%3A%0A%20%20%20%20%20%20%20%20gdf%20%3D%20gdf.to_crs%28epsg%3D5070%29%20%20%23%20NAD83%20/%20Conus%20Albers%0A%20%20%20%20gdf%5B%22AREA_KM2%22%5D%20%3D%20gdf.geometry.area%20/%201_000_000%20%20%23%20metres%C2%B2%20to%20km%C2%B2%0A%20%20%20%20gdf%5B%22POP_DENSITY%22%5D%20%3D%20gdf%5B%22POP2023%22%5D%20/%20gdf%5B%22AREA_KM2%22%5D%0A%0A%20%20%20%20enriched_path%20%3D%20get_unique_path%28output_dir%2C%20%22counties_with_density%22%2C%20%22.gpkg%22%29%0A%20%20%20%20gdf.to_file%28enriched_path%2C%20driver%3D%22GPKG%22%29%0A%0A%20%20%20%20enriched_layer%20%3D%20QgsVectorLayer%28enriched_path%2C%20%22Counties_Density%22%2C%20%22ogr%22%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28enriched_layer%29%0A%0A%20%20%20%20%23%202.%20Thematic%20map%20creation%20%28graduated%20symbology%20on%20POP_DENSITY%29%0A%20%20%20%20renderer%20%3D%20QgsGraduatedSymbolRenderer%28%22%22%2C%20%5B%5D%29%0A%20%20%20%20renderer.setClassAttribute%28%22POP_DENSITY%22%29%0A%0A%20%20%20%20classes%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%280%2C%2010%2C%20%22Less%20than%2010%22%29%2C%0A%20%20%20%20%20%20%20%20%2810%2C%2020%2C%20%2210%E2%80%9320%22%29%2C%0A%20%20%20%20%20%20%20%20%2820%2C%2050%2C%20%2220%E2%80%9350%22%29%2C%0A%20%20%20%20%20%20%20%20%2850%2C%20100%2C%20%2250%E2%80%93100%22%29%2C%0A%20%20%20%20%20%20%20%20%28100%2C%201e9%2C%20%22More%20than%20100%22%29%2C%0A%20%20%20%20%5D%0A%0A%20%20%20%20base_symbol%20%3D%20QgsSymbol.defaultSymbol%28enriched_layer.geometryType%28%29%29%0A%20%20%20%20ranges%20%3D%20%5B%5D%0A%20%20%20%20for%20lower%2C%20upper%2C%20label%20in%20classes%3A%0A%20%20%20%20%20%20%20%20sym%20%3D%20base_symbol.clone%28%29%0A%20%20%20%20%20%20%20%20rng%20%3D%20QgsRendererRange%28lower%2C%20upper%2C%20sym%2C%20label%29%0A%20%20%20%20%20%20%20%20ranges.append%28rng%29%0A%0A%20%20%20%20renderer.setClasses%28ranges%29%0A%0A%20%20%20%20%23%20Color%20ramp%20from%20blue%20to%20red%0A%20%20%20%20color_ramp%20%3D%20QgsGradientColorRamp%28QColor%280%2C%200%2C%20255%29%2C%20QColor%28255%2C%200%2C%200%29%29%0A%20%20%20%20renderer.setColorRamp%28color_ramp%29%0A%0A%20%20%20%20enriched_layer.setRenderer%28renderer%29%0A%20%20%20%20enriched_layer.triggerRepaint%28%29%0A%0A%20%20%20%20%23%203.%20Select%20features%20where%20POP_DENSITY%20%3E%20100%0A%20%20%20%20sel_params%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22INPUT%22%3A%20enriched_path%2C%0A%20%20%20%20%20%20%20%20%22EXPRESSION%22%3A%20%22%5C%22POP_DENSITY%5C%22%20%3E%20100%22%2C%0A%20%20%20%20%20%20%20%20%22OUTPUT%22%3A%20%22TEMPORARY_OUTPUT%22%2C%0A%20%20%20%20%7D%0A%20%20%20%20sel_result%20%3D%20processing.run%28%22qgis%3Aselectbyexpression%22%2C%20sel_params%29%0A%20%20%20%20selected_layer%20%3D%20QgsVectorLayer%28sel_result%5B%22OUTPUT%22%5D%2C%20%22Density_%3E100%22%2C%20%22ogr%22%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28selected_layer%29%0A%20%20%20%20print%28%0A%20%20%20%20%20%20%20%20%22Number%20of%20counties%20with%20population%20density%20%3E%20100%20people/km%C2%B2%3A%22%2C%0A%20%20%20%20%20%20%20%20selected_layer.featureCount%28%29%2C%0A%20%20%20%20%29%0A%0A%20%20%20%20%23%204.%20Calculate%20median%20of%20POP_DENSITY%0A%20%20%20%20median_value%20%3D%20gdf%5B%22POP_DENSITY%22%5D.median%28%29%0A%20%20%20%20print%28%0A%20%20%20%20%20%20%20%20%22Median%20population%20density%20across%20all%20counties%20%28people/km%C2%B2%29%3A%22%2C%0A%20%20%20%20%20%20%20%20median_value%2C%0A%20%20%20%20%29%0A%0A%0A%23%20Execute%20the%20function%0Aperform_population_density_tasks%28%29
+
+
+-------------- Running code (trial # 4/5) --------------
+
+
+code in get_debug_prompt: import os
+import pathlib
+import processing
+import geopandas as gpd
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+    QgsRendererRange,
+)
+from qgis.PyQt.QtGui import QColor
+
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    renderer = QgsGraduatedSymbolRenderer("", [])
+    renderer.setClassAttribute("POP_DENSITY")
+
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    ranges = []
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        rng = QgsRendererRange(lower, upper, sym, label)
+        ranges.append(rng)
+
+    renderer.setClasses(ranges)
+
+    # Color ramp from blue to red
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    QgsProject.instance().addMapLayer(selected_layer)
+    print(
+        "Number of counties with population density > 100 people/km²:",
+        selected_layer.featureCount(),
+    )
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print(
+        "Median population density across all counties (people/km²):",
+        median_value,
+    )
+
+
+# Execute the function
+perform_population_density_tasks()
+Error_info_str: 
+Traceback (most recent call last):
+  File "/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/SpatialAnalysisAgent/SpatialAnalysisAgent_MainThread.py", line 54, in exec_in_main_thread
+    _exec_code(code, namespace)
+  File "/Users/rohanbali/gis_work/qgis_profiles/profiles/default/python/plugins/SpatialAnalysisAgent-master/SpatialAnalysisAgent/SpatialAnalysisAgent_MainThread.py", line 15, in _exec_code
+    exec(code, namespace)  # nosec B102
+  File "Complete program", line 98, in <module>
+    perform_population_density_tasks()
+  File "Complete program", line 66, in perform_population_density_tasks
+    renderer.setClasses(ranges)
+AttributeError: 'QgsGraduatedSymbolRenderer' object has no attribute 'setClasses'
+
+========================================================
+AI IS DEBUGGING THE CODE...
+========================================================
+DEBUGGING RESPONSE:```python
+import os
+import pathlib
+import processing
+import geopandas as gpd
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+    QgsRendererRange,
+)
+from qgis.PyQt.QtGui import QColor
+
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+    if not counties_layer.isValid():
+        raise RuntimeError(f"Failed to load layer: {input_path}")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    if not enriched_layer.isValid():
+        raise RuntimeError(f"Failed to load enriched layer: {enriched_path}")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    ranges = []
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        rng = QgsRendererRange(lower, upper, sym, label)
+        ranges.append(rng)
+
+    renderer = QgsGraduatedSymbolRenderer("POP_DENSITY", ranges)
+
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    if selected_layer.isValid():
+        QgsProject.instance().addMapLayer(selected_layer)
+        print(
+            "Number of counties with population density > 100 people/km²:",
+            selected_layer.featureCount(),
+        )
+    else:
+        print("Selection layer failed to load.")
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print(
+        "Median population density across all counties (people/km²):",
+        median_value,
+    )
+
+
+# Execute the function
+perform_population_density_tasks()
+```
+========================================================
+
+DEBUGGED CODE:
+```python
+import os
+import pathlib
+import processing
+import geopandas as gpd
+from qgis.core import (
+    QgsVectorLayer,
+    QgsProject,
+    QgsGraduatedSymbolRenderer,
+    QgsSymbol,
+    QgsGradientColorRamp,
+    QgsRendererRange,
+)
+from qgis.PyQt.QtGui import QColor
+
+
+def get_unique_path(output_dir: str, base_name: str, ext: str) -> str:
+    """Return a unique file path in the output directory."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir) / f"{base_name}{ext}"
+    counter = 1
+    while path.exists():
+        path = pathlib.Path(output_dir) / f"{base_name}_{counter}{ext}"
+        counter += 1
+    return str(path)
+
+
+def perform_population_density_tasks() -> None:
+    input_path = "/Users/rohanbali/gis_work/run15/counties.gpkg"
+    output_dir = "/Users/rohanbali/gis_work/run15/workspace"
+
+    # Load the counties layer
+    counties_layer = QgsVectorLayer(input_path, "Counties", "ogr")
+    if not counties_layer.isValid():
+        raise RuntimeError(f"Failed to load layer: {input_path}")
+
+    # 1. Calculate AREA_KM2 and POP_DENSITY using geopandas
+    gdf = gpd.read_file(input_path)
+    if not gdf.crs.is_projected:
+        gdf = gdf.to_crs(epsg=5070)  # NAD83 / Conus Albers
+    gdf["AREA_KM2"] = gdf.geometry.area / 1_000_000  # metres² to km²
+    gdf["POP_DENSITY"] = gdf["POP2023"] / gdf["AREA_KM2"]
+
+    enriched_path = get_unique_path(output_dir, "counties_with_density", ".gpkg")
+    gdf.to_file(enriched_path, driver="GPKG")
+
+    enriched_layer = QgsVectorLayer(enriched_path, "Counties_Density", "ogr")
+    if not enriched_layer.isValid():
+        raise RuntimeError(f"Failed to load enriched layer: {enriched_path}")
+    QgsProject.instance().addMapLayer(enriched_layer)
+
+    # 2. Thematic map creation (graduated symbology on POP_DENSITY)
+    classes = [
+        (0, 10, "Less than 10"),
+        (10, 20, "10–20"),
+        (20, 50, "20–50"),
+        (50, 100, "50–100"),
+        (100, 1e9, "More than 100"),
+    ]
+
+    base_symbol = QgsSymbol.defaultSymbol(enriched_layer.geometryType())
+    ranges = []
+    for lower, upper, label in classes:
+        sym = base_symbol.clone()
+        rng = QgsRendererRange(lower, upper, sym, label)
+        ranges.append(rng)
+
+    renderer = QgsGraduatedSymbolRenderer("POP_DENSITY", ranges)
+
+    color_ramp = QgsGradientColorRamp(QColor(0, 0, 255), QColor(255, 0, 0))
+    renderer.setColorRamp(color_ramp)
+
+    enriched_layer.setRenderer(renderer)
+    enriched_layer.triggerRepaint()
+
+    # 3. Select features where POP_DENSITY > 100
+    sel_params = {
+        "INPUT": enriched_path,
+        "EXPRESSION": "\"POP_DENSITY\" > 100",
+        "OUTPUT": "TEMPORARY_OUTPUT",
+    }
+    sel_result = processing.run("qgis:selectbyexpression", sel_params)
+    selected_layer = QgsVectorLayer(sel_result["OUTPUT"], "Density_>100", "ogr")
+    if selected_layer.isValid():
+        QgsProject.instance().addMapLayer(selected_layer)
+        print(
+            "Number of counties with population density > 100 people/km²:",
+            selected_layer.featureCount(),
+        )
+    else:
+        print("Selection layer failed to load.")
+
+    # 4. Calculate median of POP_DENSITY
+    median_value = gdf["POP_DENSITY"].median()
+    print(
+        "Median population density across all counties (people/km²):",
+        median_value,
+    )
+
+
+# Execute the function
+perform_population_density_tasks()
+```
+CODE_READY_URLENCODED:import%20os%0Aimport%20pathlib%0Aimport%20processing%0Aimport%20geopandas%20as%20gpd%0Afrom%20qgis.core%20import%20%28%0A%20%20%20%20QgsVectorLayer%2C%0A%20%20%20%20QgsProject%2C%0A%20%20%20%20QgsGraduatedSymbolRenderer%2C%0A%20%20%20%20QgsSymbol%2C%0A%20%20%20%20QgsGradientColorRamp%2C%0A%20%20%20%20QgsRendererRange%2C%0A%29%0Afrom%20qgis.PyQt.QtGui%20import%20QColor%0A%0A%0Adef%20get_unique_path%28output_dir%3A%20str%2C%20base_name%3A%20str%2C%20ext%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Return%20a%20unique%20file%20path%20in%20the%20output%20directory.%22%22%22%0A%20%20%20%20os.makedirs%28output_dir%2C%20exist_ok%3DTrue%29%0A%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D%7Bext%7D%22%0A%20%20%20%20counter%20%3D%201%0A%20%20%20%20while%20path.exists%28%29%3A%0A%20%20%20%20%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D_%7Bcounter%7D%7Bext%7D%22%0A%20%20%20%20%20%20%20%20counter%20%2B%3D%201%0A%20%20%20%20return%20str%28path%29%0A%0A%0Adef%20perform_population_density_tasks%28%29%20-%3E%20None%3A%0A%20%20%20%20input_path%20%3D%20%22/Users/rohanbali/gis_work/run15/counties.gpkg%22%0A%20%20%20%20output_dir%20%3D%20%22/Users/rohanbali/gis_work/run15/workspace%22%0A%0A%20%20%20%20%23%20Load%20the%20counties%20layer%0A%20%20%20%20counties_layer%20%3D%20QgsVectorLayer%28input_path%2C%20%22Counties%22%2C%20%22ogr%22%29%0A%20%20%20%20if%20not%20counties_layer.isValid%28%29%3A%0A%20%20%20%20%20%20%20%20raise%20RuntimeError%28f%22Failed%20to%20load%20layer%3A%20%7Binput_path%7D%22%29%0A%0A%20%20%20%20%23%201.%20Calculate%20AREA_KM2%20and%20POP_DENSITY%20using%20geopandas%0A%20%20%20%20gdf%20%3D%20gpd.read_file%28input_path%29%0A%20%20%20%20if%20not%20gdf.crs.is_projected%3A%0A%20%20%20%20%20%20%20%20gdf%20%3D%20gdf.to_crs%28epsg%3D5070%29%20%20%23%20NAD83%20/%20Conus%20Albers%0A%20%20%20%20gdf%5B%22AREA_KM2%22%5D%20%3D%20gdf.geometry.area%20/%201_000_000%20%20%23%20metres%C2%B2%20to%20km%C2%B2%0A%20%20%20%20gdf%5B%22POP_DENSITY%22%5D%20%3D%20gdf%5B%22POP2023%22%5D%20/%20gdf%5B%22AREA_KM2%22%5D%0A%0A%20%20%20%20enriched_path%20%3D%20get_unique_path%28output_dir%2C%20%22counties_with_density%22%2C%20%22.gpkg%22%29%0A%20%20%20%20gdf.to_file%28enriched_path%2C%20driver%3D%22GPKG%22%29%0A%0A%20%20%20%20enriched_layer%20%3D%20QgsVectorLayer%28enriched_path%2C%20%22Counties_Density%22%2C%20%22ogr%22%29%0A%20%20%20%20if%20not%20enriched_layer.isValid%28%29%3A%0A%20%20%20%20%20%20%20%20raise%20RuntimeError%28f%22Failed%20to%20load%20enriched%20layer%3A%20%7Benriched_path%7D%22%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28enriched_layer%29%0A%0A%20%20%20%20%23%202.%20Thematic%20map%20creation%20%28graduated%20symbology%20on%20POP_DENSITY%29%0A%20%20%20%20classes%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%280%2C%2010%2C%20%22Less%20than%2010%22%29%2C%0A%20%20%20%20%20%20%20%20%2810%2C%2020%2C%20%2210%E2%80%9320%22%29%2C%0A%20%20%20%20%20%20%20%20%2820%2C%2050%2C%20%2220%E2%80%9350%22%29%2C%0A%20%20%20%20%20%20%20%20%2850%2C%20100%2C%20%2250%E2%80%93100%22%29%2C%0A%20%20%20%20%20%20%20%20%28100%2C%201e9%2C%20%22More%20than%20100%22%29%2C%0A%20%20%20%20%5D%0A%0A%20%20%20%20base_symbol%20%3D%20QgsSymbol.defaultSymbol%28enriched_layer.geometryType%28%29%29%0A%20%20%20%20ranges%20%3D%20%5B%5D%0A%20%20%20%20for%20lower%2C%20upper%2C%20label%20in%20classes%3A%0A%20%20%20%20%20%20%20%20sym%20%3D%20base_symbol.clone%28%29%0A%20%20%20%20%20%20%20%20rng%20%3D%20QgsRendererRange%28lower%2C%20upper%2C%20sym%2C%20label%29%0A%20%20%20%20%20%20%20%20ranges.append%28rng%29%0A%0A%20%20%20%20renderer%20%3D%20QgsGraduatedSymbolRenderer%28%22POP_DENSITY%22%2C%20ranges%29%0A%0A%20%20%20%20color_ramp%20%3D%20QgsGradientColorRamp%28QColor%280%2C%200%2C%20255%29%2C%20QColor%28255%2C%200%2C%200%29%29%0A%20%20%20%20renderer.setColorRamp%28color_ramp%29%0A%0A%20%20%20%20enriched_layer.setRenderer%28renderer%29%0A%20%20%20%20enriched_layer.triggerRepaint%28%29%0A%0A%20%20%20%20%23%203.%20Select%20features%20where%20POP_DENSITY%20%3E%20100%0A%20%20%20%20sel_params%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22INPUT%22%3A%20enriched_path%2C%0A%20%20%20%20%20%20%20%20%22EXPRESSION%22%3A%20%22%5C%22POP_DENSITY%5C%22%20%3E%20100%22%2C%0A%20%20%20%20%20%20%20%20%22OUTPUT%22%3A%20%22TEMPORARY_OUTPUT%22%2C%0A%20%20%20%20%7D%0A%20%20%20%20sel_result%20%3D%20processing.run%28%22qgis%3Aselectbyexpression%22%2C%20sel_params%29%0A%20%20%20%20selected_layer%20%3D%20QgsVectorLayer%28sel_result%5B%22OUTPUT%22%5D%2C%20%22Density_%3E100%22%2C%20%22ogr%22%29%0A%20%20%20%20if%20selected_layer.isValid%28%29%3A%0A%20%20%20%20%20%20%20%20QgsProject.instance%28%29.addMapLayer%28selected_layer%29%0A%20%20%20%20%20%20%20%20print%28%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Number%20of%20counties%20with%20population%20density%20%3E%20100%20people/km%C2%B2%3A%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20selected_layer.featureCount%28%29%2C%0A%20%20%20%20%20%20%20%20%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Selection%20layer%20failed%20to%20load.%22%29%0A%0A%20%20%20%20%23%204.%20Calculate%20median%20of%20POP_DENSITY%0A%20%20%20%20median_value%20%3D%20gdf%5B%22POP_DENSITY%22%5D.median%28%29%0A%20%20%20%20print%28%0A%20%20%20%20%20%20%20%20%22Median%20population%20density%20across%20all%20counties%20%28people/km%C2%B2%29%3A%22%2C%0A%20%20%20%20%20%20%20%20median_value%2C%0A%20%20%20%20%29%0A%0A%0A%23%20Execute%20the%20function%0Aperform_population_density_tasks%28%29
+
+
+-------------- Running code (trial # 5/5) --------------
+
+
+Failed to execute and debug the code within 5 times.
+CODE_READY_URLENCODED2:import%20os%0Aimport%20pathlib%0Aimport%20processing%0Aimport%20geopandas%20as%20gpd%0Afrom%20qgis.core%20import%20%28%0A%20%20%20%20QgsVectorLayer%2C%0A%20%20%20%20QgsProject%2C%0A%20%20%20%20QgsGraduatedSymbolRenderer%2C%0A%20%20%20%20QgsSymbol%2C%0A%20%20%20%20QgsGradientColorRamp%2C%0A%20%20%20%20QgsRendererRange%2C%0A%29%0Afrom%20qgis.PyQt.QtGui%20import%20QColor%0A%0A%0Adef%20get_unique_path%28output_dir%3A%20str%2C%20base_name%3A%20str%2C%20ext%3A%20str%29%20-%3E%20str%3A%0A%20%20%20%20%22%22%22Return%20a%20unique%20file%20path%20in%20the%20output%20directory.%22%22%22%0A%20%20%20%20os.makedirs%28output_dir%2C%20exist_ok%3DTrue%29%0A%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D%7Bext%7D%22%0A%20%20%20%20counter%20%3D%201%0A%20%20%20%20while%20path.exists%28%29%3A%0A%20%20%20%20%20%20%20%20path%20%3D%20pathlib.Path%28output_dir%29%20/%20f%22%7Bbase_name%7D_%7Bcounter%7D%7Bext%7D%22%0A%20%20%20%20%20%20%20%20counter%20%2B%3D%201%0A%20%20%20%20return%20str%28path%29%0A%0A%0Adef%20perform_population_density_tasks%28%29%20-%3E%20None%3A%0A%20%20%20%20input_path%20%3D%20%22/Users/rohanbali/gis_work/run15/counties.gpkg%22%0A%20%20%20%20output_dir%20%3D%20%22/Users/rohanbali/gis_work/run15/workspace%22%0A%0A%20%20%20%20%23%20Load%20the%20counties%20layer%0A%20%20%20%20counties_layer%20%3D%20QgsVectorLayer%28input_path%2C%20%22Counties%22%2C%20%22ogr%22%29%0A%20%20%20%20if%20not%20counties_layer.isValid%28%29%3A%0A%20%20%20%20%20%20%20%20raise%20RuntimeError%28f%22Failed%20to%20load%20layer%3A%20%7Binput_path%7D%22%29%0A%0A%20%20%20%20%23%201.%20Calculate%20AREA_KM2%20and%20POP_DENSITY%20using%20geopandas%0A%20%20%20%20gdf%20%3D%20gpd.read_file%28input_path%29%0A%20%20%20%20if%20not%20gdf.crs.is_projected%3A%0A%20%20%20%20%20%20%20%20gdf%20%3D%20gdf.to_crs%28epsg%3D5070%29%20%20%23%20NAD83%20/%20Conus%20Albers%0A%20%20%20%20gdf%5B%22AREA_KM2%22%5D%20%3D%20gdf.geometry.area%20/%201_000_000%20%20%23%20metres%C2%B2%20to%20km%C2%B2%0A%20%20%20%20gdf%5B%22POP_DENSITY%22%5D%20%3D%20gdf%5B%22POP2023%22%5D%20/%20gdf%5B%22AREA_KM2%22%5D%0A%0A%20%20%20%20enriched_path%20%3D%20get_unique_path%28output_dir%2C%20%22counties_with_density%22%2C%20%22.gpkg%22%29%0A%20%20%20%20gdf.to_file%28enriched_path%2C%20driver%3D%22GPKG%22%29%0A%0A%20%20%20%20enriched_layer%20%3D%20QgsVectorLayer%28enriched_path%2C%20%22Counties_Density%22%2C%20%22ogr%22%29%0A%20%20%20%20if%20not%20enriched_layer.isValid%28%29%3A%0A%20%20%20%20%20%20%20%20raise%20RuntimeError%28f%22Failed%20to%20load%20enriched%20layer%3A%20%7Benriched_path%7D%22%29%0A%20%20%20%20QgsProject.instance%28%29.addMapLayer%28enriched_layer%29%0A%0A%20%20%20%20%23%202.%20Thematic%20map%20creation%20%28graduated%20symbology%20on%20POP_DENSITY%29%0A%20%20%20%20classes%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%280%2C%2010%2C%20%22Less%20than%2010%22%29%2C%0A%20%20%20%20%20%20%20%20%2810%2C%2020%2C%20%2210%E2%80%9320%22%29%2C%0A%20%20%20%20%20%20%20%20%2820%2C%2050%2C%20%2220%E2%80%9350%22%29%2C%0A%20%20%20%20%20%20%20%20%2850%2C%20100%2C%20%2250%E2%80%93100%22%29%2C%0A%20%20%20%20%20%20%20%20%28100%2C%201e9%2C%20%22More%20than%20100%22%29%2C%0A%20%20%20%20%5D%0A%0A%20%20%20%20base_symbol%20%3D%20QgsSymbol.defaultSymbol%28enriched_layer.geometryType%28%29%29%0A%20%20%20%20ranges%20%3D%20%5B%5D%0A%20%20%20%20for%20lower%2C%20upper%2C%20label%20in%20classes%3A%0A%20%20%20%20%20%20%20%20sym%20%3D%20base_symbol.clone%28%29%0A%20%20%20%20%20%20%20%20rng%20%3D%20QgsRendererRange%28lower%2C%20upper%2C%20sym%2C%20label%29%0A%20%20%20%20%20%20%20%20ranges.append%28rng%29%0A%0A%20%20%20%20renderer%20%3D%20QgsGraduatedSymbolRenderer%28%22POP_DENSITY%22%2C%20ranges%29%0A%0A%20%20%20%20color_ramp%20%3D%20QgsGradientColorRamp%28QColor%280%2C%200%2C%20255%29%2C%20QColor%28255%2C%200%2C%200%29%29%0A%20%20%20%20renderer.setColorRamp%28color_ramp%29%0A%0A%20%20%20%20enriched_layer.setRenderer%28renderer%29%0A%20%20%20%20enriched_layer.triggerRepaint%28%29%0A%0A%20%20%20%20%23%203.%20Select%20features%20where%20POP_DENSITY%20%3E%20100%0A%20%20%20%20sel_params%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22INPUT%22%3A%20enriched_path%2C%0A%20%20%20%20%20%20%20%20%22EXPRESSION%22%3A%20%22%5C%22POP_DENSITY%5C%22%20%3E%20100%22%2C%0A%20%20%20%20%20%20%20%20%22OUTPUT%22%3A%20%22TEMPORARY_OUTPUT%22%2C%0A%20%20%20%20%7D%0A%20%20%20%20sel_result%20%3D%20processing.run%28%22qgis%3Aselectbyexpression%22%2C%20sel_params%29%0A%20%20%20%20selected_layer%20%3D%20QgsVectorLayer%28sel_result%5B%22OUTPUT%22%5D%2C%20%22Density_%3E100%22%2C%20%22ogr%22%29%0A%20%20%20%20if%20selected_layer.isValid%28%29%3A%0A%20%20%20%20%20%20%20%20QgsProject.instance%28%29.addMapLayer%28selected_layer%29%0A%20%20%20%20%20%20%20%20print%28%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Number%20of%20counties%20with%20population%20density%20%3E%20100%20people/km%C2%B2%3A%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20selected_layer.featureCount%28%29%2C%0A%20%20%20%20%20%20%20%20%29%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Selection%20layer%20failed%20to%20load.%22%29%0A%0A%20%20%20%20%23%204.%20Calculate%20median%20of%20POP_DENSITY%0A%20%20%20%20median_value%20%3D%20gdf%5B%22POP_DENSITY%22%5D.median%28%29%0A%20%20%20%20print%28%0A%20%20%20%20%20%20%20%20%22Median%20population%20density%20across%20all%20counties%20%28people/km%C2%B2%29%3A%22%2C%0A%20%20%20%20%20%20%20%20median_value%2C%0A%20%20%20%20%29%0A%0A%0A%23%20Execute%20the%20function%0Aperform_population_density_tasks%28%29
+Error reporting skipped (not using gibd-services API key)
+Warning: QPainter::begin: Paint device returned engine == 0, type: 3
+Warning: QPainter::end: Painter not active, aborted
