@@ -178,8 +178,9 @@ still print wrong numbers, as runs 7 and 11 did.
 
 At the end of every run, GIS Copilot 1.4 sends a request to the developers' server,
 even when the model is local. The driver blocks it ([methods, section 2](methods.md#2-setup-that-was-actually-used)), so each run record
-lists one blocked call. A related issue is being reported to the maintainers
-privately, and details will be added here once they have had a chance to respond.
+lists one blocked call. A related issue was reported to the maintainers privately
+on November 8, 2026. They confirmed it and plan to fix it in GIS Copilot 1.5, and
+details will be added here after that release.
 
 ### 4.2 Code quality limits the numbers more than judgment does
 
